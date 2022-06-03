@@ -1,9 +1,20 @@
 // Bring in the phaser library
 import Phaser from 'phaser'
-import CONFIG from './config.js'
 
 // Bringing in our base example scene
 import GameScene from './scenes/Game.js'
+
+import React from 'react';
+import ReactDOM from 'react-dom'
+
+import App from './scenes/App';
+
+ReactDOM.render(
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>,
+    document.querySelector('#root')
+);
 
 const config = {
   // Configure Phaser graphics settings
@@ -16,9 +27,6 @@ const config = {
     height: "100%",
   },
 
-  // width: CONFIG.DEFAULT_WIDTH,
-  // height: CONFIG.DEFAULT_HEIGHT,
-
 }
 
 // Initialize the base phaser game object (must always be done once)
@@ -27,3 +35,4 @@ const game = new Phaser.Game(config)
 // Add and auto-starting ExampleScene
 game.scene.add('GameScene', GameScene)
 game.scene.start('GameScene')
+

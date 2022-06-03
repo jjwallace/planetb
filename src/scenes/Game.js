@@ -1,12 +1,9 @@
 import Phaser from 'phaser'
 import * as dat from 'dat.gui';
-import CONFIG from '../config.js'
 
 class Game extends Phaser.Scene {
   preload () {
     
-    this.load.image('sky', 'assets/textures/starry-sky.jpg');
-
     this.objects = [
       {
         name: 'sun',
@@ -142,31 +139,26 @@ class Game extends Phaser.Scene {
       },
     ]
     
-  
   }
-
-
+  
   create () {
-    //this.setBackgroundColor = "#444444";
+    const d = new Date();
+    let time = d.getTime();
+    console.log('BUILDING SOLAR SYSTEM ********* StarDATE: ' + time)
 
     var cam = this.cameras.main;
     var wx = window.innerWidth/2;
     var wy = window.innerHeight/2;
     console.log('WINDOW DIMENSIONS ', wx + ' : '+ wy)
-    //cam.setViewport(-wx, -wy, wx, wy)
     var boundSize = 10000;
     cam.setBounds(-boundSize, -boundSize, boundSize * 2, boundSize * 2)
-    //cam.setBackgroundColor("#444444");
     cam.setScroll(-wx,-wy);
-    //cam.setPosition(-wx,-wy); cam window pos
     cam.setOrigin(0.5, 0.5); // The values are given in the range 0 to 1 and are only used when calculating Camera rotation.
     cam.setZoom(1);
 
     // this.backgroundSky = this.add.image(0, 0, "sky");
     // this.backgroundSky.setScale(0.5);
 
-    
-    
     for (let index = 0; index < this.objects.length; index++) {
       this[this.objects[index].name + 'Object'] = this.add.circle(0, 0, this.objects[index].radius, this.objects[index].features.color);
       this[this.objects[index].name + 'Object'].setInteractive();
@@ -174,21 +166,14 @@ class Game extends Phaser.Scene {
       this[this.objects[index].name + 'Object'].data = this.objects[index];
       this[this.objects[index].name + 'Object'].on('pointerdown', function (pointer) {
         console.log(this);
-        //this.setTint(0xfff);
-        cam.zoomTo(this.data.zoom.size, this.data.zoom.speed, "Sine.easeInOut",true)
-        //cam.startFollow(this,true,1,1)
+        cam.zoomTo(this.data.zoom.size, this.data.zoom.speed, 'Sine.easeInOut', true);
         this.scene.selected = {obj: this, id: this.data};
-      });
-      
+      })
     }
     this.selected = {obj: this['sun' + 'Object'], id: this['sun' + 'Object'].data};
 
-
-
-    this.cursors = this.input.keyboard.createCursorKeys();
-    
-
-
+    // // BELOW IS CLICK ITERATION CODE TO SCAN THROUGH ALL THE PLANETS JUST FOR TESTING
+    // // MAY BE USEFULL LATER SO JUST LEAVING
     // let pos = 0;
     // this.input.on('pointerdown', function () {
     //   console.log('CLICK', pos)
@@ -214,45 +199,36 @@ class Game extends Phaser.Scene {
     //     }
 
     //   }
-
-
-      
-      
     //   this.selected = {obj: obj, id: id};
     //   console.log('SELECTED: ', this.selected)
-      
     //   //  cam.pan(obj.x, obj.y, 1000, 'Sine.easeInOut',true,function(camera){camera.pan(obj.x, obj.y, 1000, 'Sine.easeInOut')});
     //   cam.zoomTo(this.selected.id.zoom.size, this.selected.id.zoom.speed, "Sine.easeInOut",true)
     //   //cam.startFollow(obj,true,1,1)
 
     // }, this);
 
-
     //DAT GUI DEBUG GUI
-
     const cursors = this.input.keyboard.createCursorKeys();
-
     const controlConfig = {
-        camera: this.cameras.main,
-        left: cursors.left,
-        right: cursors.right,
-        up: cursors.up,
-        down: cursors.down,
-        zoomIn: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
-        zoomOut: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
-        acceleration: 0.6,
-        drag: 0.0005,
-        maxSpeed: 1.0
-        
-    };
+      camera: this.cameras.main,
+      left: cursors.left,
+      right: cursors.right,
+      up: cursors.up,
+      down: cursors.down,
+      zoomIn: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
+      zoomOut: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
+      acceleration: 0.6,
+      drag: 0.0005,
+      maxSpeed: 1.0
+    }
 
     this.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
     const gui = new dat.GUI();
 
     const help = {
-        line1: 'Cursors to move',
-        line2: 'Q & E to zoom'
+      line1: 'Cursors to move',
+      line2: 'Q & E to zoom'
     }
 
     const f1 = gui.addFolder('Camera');
@@ -265,13 +241,11 @@ class Game extends Phaser.Scene {
     f1.add(help, 'line1');
     f1.add(help, 'line2');
     f1.open();
-
   }
 
-  update(time, delta){
+  update(time, delta) {
     
     let cam = this.cameras.main;
-
     let wx = window.innerWidth/2;
     let wy = window.innerHeight/2;
     let speed = 10; //smaller is faster
@@ -281,6 +255,7 @@ class Game extends Phaser.Scene {
 
     this.controls.update(delta);
 
+    //RIP THIS OUT TO THE BACKEND
     for (let index = 0; index < this.objects.length; index++) {
       if(this.objects[index].parent != null){
         var newPos = rotate_point(
@@ -293,17 +268,16 @@ class Game extends Phaser.Scene {
     }
 
     function rotate_point(origin, body) {
-
+      
       body.orbit.angle +=  (1.0 / body.orbit.period);
       var ang = body.orbit.angle * 2.0 * Math.PI / 180.0;
-      var r = body.orbit.distance; //also know as speed
+      var r = body.orbit.distance; // also know as speed
       return {
-          x: Math.cos(ang) * r - Math.sin(ang) * r + origin.x,
-          y: Math.sin(ang) * r + Math.cos(ang) * r + origin.y
+        x: Math.cos(ang) * r - Math.sin(ang) * r + origin.x,
+        y: Math.sin(ang) * r + Math.cos(ang) * r + origin.y
       };
     } // rotate_point ref switched to distance ref
       // generic rendering of a unit orbital progression of a planet
-
 
   }
 
