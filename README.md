@@ -1,3 +1,27 @@
+# PLANET B
+![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/dev/pictures/galaxy.jpg)
+
+## Install
+
+```bash
+git clone https://github.com/jjwallace/planetb.git
+cd planetb
+npm install
+
+# or
+npx degit "jjwallace/planetb" planetb
+cd planetb
+npm install
+```
+
+## Running
+
+```bash
+npm start
+```
+
+
+## Archive From Boilerplate
 # Phaser 3 + ESBuild + ES6 Template
 
 This repo contains an example of how to create a game using Phaser 3, ES6 and [ESBuild](https://github.com/evanw/esbuild).  It uses esbuild's built-in server when used in dev or prod mode.
