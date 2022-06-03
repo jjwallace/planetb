@@ -1,14 +1,16 @@
 import React from 'react';
 import Button from '../components/menu/Button';
+import Menu from '../components/menu/Menu';
+import Banner from '../components/banner/Banner';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <header className="App-header">
-        <h1>Hello World</h1>
+        <Banner />
       </header>
       <main>
-        <Button />
+        <Menu />
       </main>
     </div>
   );

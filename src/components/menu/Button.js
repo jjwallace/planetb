@@ -3,9 +3,19 @@ import gsap from "gsap";
 
 function Button() {
 
+	var buttonState = 1;
+
 	function handleClick(){
 		console.log('click')
-		gsap.to(".button", {scale: 0, x: -300, backgroundColor: "#4CAF50", duration: 0.3, ease: "strong.inOut"});
+		if(buttonState == 1){
+			gsap.to(".button", {scale: 0.5, duration: 0.5, ease: "strong.inOut"});
+			buttonState = 0
+		}else{
+			gsap.to(".button", {scale: 1, duration: 0.5, ease: "strong.inOut"});
+			buttonState = 1;
+		}
+		//gsap.to(".button", {scale: 0, x: -300, backgroundColor: "#4CAF50", duration: 0.5, ease: "strong.inOut"});
+
 	}
 
 	gsap.to(".button", {scale: 1, backgroundColor: "#4CAF50", duration: 1, ease: "strong.inOut"});
