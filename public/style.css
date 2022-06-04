@@ -29,6 +29,13 @@ body{
     width: 100%;
 }
 
+.menu{
+    padding: 2px;
+    margin: 2px;
+    width: 100px;
+}
+
+
 .button{
     border-radius: 5px;
     background: #73AD21;

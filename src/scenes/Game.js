@@ -144,7 +144,7 @@ class Game extends Phaser.Scene {
   create () {
     const d = new Date();
     let time = d.getTime();
-    console.log('BUILDING SOLAR SYSTEM ********* StarDATE: ' + time)
+    console.log('BUILDING SOLAR SYSTEM - STARDATE: ' + time)
 
     var cam = this.cameras.main;
     var wx = window.innerWidth/2;
