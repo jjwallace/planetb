@@ -31,10 +31,10 @@ class Button extends React.Component {
 		//`url(./assets/buttons/${this.props.backgroundImage}.jpg)`
 		//`url(./assets/buttons/${this.props.backgroundImage + ".jpg"})`
 		
-		//`url("/assets/buttons/${this.props.backgroundImage}.jpg")`
+		//`url('/assets/buttons/${this.props.backgroundImage}.jpg')`
 		const buttonStyle = {
 			borderRadius: '5px',
-			backgroundImage: 'url(../assets/buttons/'+this.props.backgroundImage+'.jpg)',
+			backgroundImage: `('./assets/buttons/${this.props.backgroundImage}.jpg')`,
 			background: this.props.background,
 			padding: '10px',
 			margin: '3px',
