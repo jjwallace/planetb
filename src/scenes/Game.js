@@ -1,8 +1,11 @@
 import Phaser from 'phaser'
 import * as dat from 'dat.gui';
+import Planet from "../entities/Planet"
 
 class Game extends Phaser.Scene {
   preload () {
+
+    this.load.image("base", "./assets/sprites/base.png");
     
     this.objects = [
       {
@@ -138,7 +141,20 @@ class Game extends Phaser.Scene {
         }
       },
     ]
-    
+
+    this.surfaceObjects = [
+      {
+        name: 'base',
+        parent: 'planet',
+        radius: 20,
+        zoom: {size: 1, speed: 100},
+        features: {color: 0x33ffee},
+        location: {
+          x: 0,
+          a: 0
+        }
+      }
+    ] 
   }
   
   create () {
@@ -159,8 +175,18 @@ class Game extends Phaser.Scene {
     // this.backgroundSky = this.add.image(0, 0, "sky");
     // this.backgroundSky.setScale(0.5);
 
+    // = new Planet(
+    //   {
+    //     scene: this, 
+    //     x:0, y:0, 
+    //     radius: this.objects[index].radius, 
+    //     color: this.objects[index].features.color
+    //   }
+    // );
+
     for (let index = 0; index < this.objects.length; index++) {
       this[this.objects[index].name + 'Object'] = this.add.circle(0, 0, this.objects[index].radius, this.objects[index].features.color);
+      //this[this.objects[index].name + 'Object'] = new Planet({scene: this, radius:this.objects[index].radius, color: this.objects[index].features.color});
       this[this.objects[index].name + 'Object'].setInteractive();
       this[this.objects[index].name + 'Object'].name = this.objects[index].name;
       this[this.objects[index].name + 'Object'].data = this.objects[index];
@@ -171,6 +197,9 @@ class Game extends Phaser.Scene {
       })
     }
     this.selected = {obj: this['sun' + 'Object'], id: this['sun' + 'Object'].data};
+
+    //let myPlanet = new Planet({scene: this, x:0, y:0, radius: 10, color: '#ffffff'});
+   
 
     // // BELOW IS CLICK ITERATION CODE TO SCAN THROUGH ALL THE PLANETS JUST FOR TESTING
     // // MAY BE USEFULL LATER SO JUST LEAVING
