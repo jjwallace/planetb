@@ -13,7 +13,9 @@ class Game extends Phaser.Scene {
         parent: null,
         radius: 20,
         zoom: {size: 1, speed: 100},
-        features: {color: 0x33ffee},
+        features: {
+          color: 0xffff66,
+        },
         orbit:{
           angle:0, 
           period: 4, 
@@ -23,9 +25,16 @@ class Game extends Phaser.Scene {
       {
         name: 'planet',
         parent: "sun",
+        type: 'planet',
         radius: 10,
         zoom: {size: 10, speed: 1000},
-        features: {color: 0x6666ff},
+        features: {
+          color: 0x564000,
+          atmosphere: {
+            size: 10,
+            color: 0x7777ff
+          }
+        },
         orbit:{
           angle:0, 
           period: 9, 
@@ -36,6 +45,7 @@ class Game extends Phaser.Scene {
         name: 'moon',
         radius: 5,
         parent: "planet",
+        type: 'planet',
         zoom: {size: 20, speed: 1000},
         features: {color: 0x666666},
         orbit: {
@@ -47,6 +57,7 @@ class Game extends Phaser.Scene {
       {
         name: 'planet2',
         parent: "sun",
+        type: 'planet',
         radius: 10,
         zoom: {size: 10, speed: 1000},
         features: {color: 0xee96ff},
@@ -57,9 +68,23 @@ class Game extends Phaser.Scene {
         }
       },
       {
+        name: 'building',
+        parent: "planet2",
+        type: 'surface',
+        radius: 0.6,
+        zoom: {size: 10, speed: 2000},
+        features: {color: 0xff3333},
+        orbit:{
+          angle: 98, 
+          period: 12, 
+          distance: 15
+        }
+      },
+      {
         name: 'moon2',
         radius: 5,
         parent: "planet2",
+        type: 'planet',
         zoom: {size: 20, speed: 1000},
         features: {color: 0x666666},
         orbit: {
@@ -71,6 +96,7 @@ class Game extends Phaser.Scene {
       {
         name: 'planet3',
         parent: "sun",
+        type: 'planet',
         radius: 10,
         zoom: {size: 10, speed: 1000},
         features: {color: 0xeeff44},
@@ -84,6 +110,7 @@ class Game extends Phaser.Scene {
         name: 'moon3',
         radius: 5,
         parent: "planet3",
+        type: 'planet',
         zoom: {size: 20, speed: 1000},
         features: {color: 0x666666},
         orbit: {
@@ -95,6 +122,7 @@ class Game extends Phaser.Scene {
       {
         name: 'meteor',
         parent: "sun",
+        type: 'planet',
         radius: 5,
         zoom: {size: 10, speed: 1000},
         features: {color: 0x666666},
@@ -107,6 +135,7 @@ class Game extends Phaser.Scene {
       {
         name: 'meteor2',
         parent: "sun",
+        type: 'planet',
         radius: 5,
         zoom: {size: 10, speed: 1000},
         features: {color: 0x666666},
@@ -119,6 +148,7 @@ class Game extends Phaser.Scene {
       {
         name: 'meteor3',
         parent: "sun",
+        type: 'planet',
         radius: 5,
         zoom: {size: 10, speed: 1000},
         features: {color: 0x666666},
@@ -131,6 +161,7 @@ class Game extends Phaser.Scene {
       {
         name: 'meteor4',
         parent: "sun",
+        type: 'planet',
         radius: 5,
         zoom: {size: 10, speed: 1000},
         features: {color: 0x666666},
@@ -146,6 +177,7 @@ class Game extends Phaser.Scene {
       {
         name: 'base',
         parent: 'planet',
+        type: 'planet',
         radius: 20,
         zoom: {size: 1, speed: 100},
         features: {color: 0x33ffee},
@@ -185,8 +217,9 @@ class Game extends Phaser.Scene {
     // );
 
     for (let index = 0; index < this.objects.length; index++) {
-      this[this.objects[index].name + 'Object'] = this.add.circle(0, 0, this.objects[index].radius, this.objects[index].features.color);
-      //this[this.objects[index].name + 'Object'] = new Planet({scene: this, radius:this.objects[index].radius, color: this.objects[index].features.color});
+     // this[this.objects[index].name + 'Object'] = this.add.circle(0, 0, this.objects[index].radius, this.objects[index].features.color);
+      this[this.objects[index].name + 'Object'] = new Planet({scene: this, object: this.objects[index]});
+      this[this.objects[index].name + 'Object'].setSize(this.objects[index].radius * 2, this.objects[index].radius * 2);
       this[this.objects[index].name + 'Object'].setInteractive();
       this[this.objects[index].name + 'Object'].name = this.objects[index].name;
       this[this.objects[index].name + 'Object'].data = this.objects[index];
@@ -286,21 +319,65 @@ class Game extends Phaser.Scene {
 
     //RIP THIS OUT TO THE BACKEND
     for (let index = 0; index < this.objects.length; index++) {
-      if(this.objects[index].parent != null){
-        var newPos = rotate_point(
-          this[this.objects[index].parent + 'Object'], 
-          this.objects[index]
-        );
-        this[this.objects[index].name + 'Object'].x = newPos.x;
-        this[this.objects[index].name + 'Object'].y = newPos.y;
+      let type = this.objects[index].type;
+      if(type != null){
+
+
+        if(type == 'planet'){
+          var newPos = rotate_point(
+            this[this.objects[index].parent + 'Object'], 
+            this.objects[index]
+          );
+          this[this.objects[index].name + 'Object'].x = newPos.x;
+          this[this.objects[index].name + 'Object'].y = newPos.y;
+        }else if (type == 'surface'){
+          var newPos = surfaceStick(
+            this[this.objects[index].parent + 'Object'], 
+            this[this.objects[index].name + 'Object'],
+            this.objects[index]
+          );
+          this[this.objects[index].name + 'Object'].x = newPos.x;
+          this[this.objects[index].name + 'Object'].y = newPos.y;
+          this[this.objects[index].name + 'Object'].angle = newPos.angle;
+        }
+
+
+
+
+
+
       }
     }
 
-    function rotate_point(origin, body) {
+    function surfaceStick(origin, child, objectData) {
+      function getAngle(cx, cy, ex, ey) {
+        var dy = ey - cy;
+        var dx = ex - cx;
+        var theta = Math.atan2(dy, dx); // range (-PI, PI]
+        theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
+        if (theta < 0) theta = 360 + theta; // range [0, 360)
+        return theta+90;
+      }
+
+
+      console.log('SURFACE', origin.x, origin.y, child.x, child.y)
+      objectData.orbit.angle +=  (1.0 / objectData.orbit.period);
+      var ang = objectData.orbit.angle * 2.0 * Math.PI / 180.0;
+      var r = origin.radius; // also know as speed
+      return {
+        x: Math.cos(ang) * r - Math.sin(ang) * r + origin.x,
+        y: Math.sin(ang) * r + Math.cos(ang) * r + origin.y,
+        angle: getAngle(origin.x, origin.y, child.x, child.y)
+      };
+    } // rotate_point ref switched to distance ref
+      // generic rendering of a unit orbital progression of a planet
+
+
+    function rotate_point(origin, objectData) {
       
-      body.orbit.angle +=  (1.0 / body.orbit.period);
-      var ang = body.orbit.angle * 2.0 * Math.PI / 180.0;
-      var r = body.orbit.distance; // also know as speed
+      objectData.orbit.angle +=  (1.0 / objectData.orbit.period);
+      var ang = objectData.orbit.angle * 2.0 * Math.PI / 180.0;
+      var r = objectData.orbit.distance; // also know as speed
       return {
         x: Math.cos(ang) * r - Math.sin(ang) * r + origin.x,
         y: Math.sin(ang) * r + Math.cos(ang) * r + origin.y
