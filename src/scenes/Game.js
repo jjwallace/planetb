@@ -11,15 +11,15 @@ class Game extends Phaser.Scene {
       {
         name: 'sun',
         parent: null,
-        radius: 20,
-        zoom: {size: 1, speed: 100},
+        radius: 200,
+        zoom: {size: 0.1, speed: 100},
         features: {
           color: 0xffff66,
         },
         orbit:{
           angle:0, 
           period: 4, 
-          distance: 200
+          distance: 2000
         }
       },
       {
@@ -27,148 +27,148 @@ class Game extends Phaser.Scene {
         parent: "sun",
         type: 'planet',
         radius: 10,
-        zoom: {size: 10, speed: 1000},
+        zoom: {size: 100, speed: 1000},
         features: {
           color: 0x564000,
           atmosphere: {
-            size: 10,
+            size: 100,
             color: 0x7777ff
           }
         },
         orbit:{
           angle:0, 
           period: 9, 
-          distance: 200
+          distance: 2000
         }
       },
       {
         name: 'moon',
-        radius: 5,
+        radius: 50,
         parent: "planet",
         type: 'planet',
-        zoom: {size: 20, speed: 1000},
+        zoom: {size: 4, speed: 1000},
         features: {color: 0x666666},
         orbit: {
           angle:0, 
           period: 3, 
-          distance: 40
+          distance: 400
         }
       },
       {
         name: 'planet2',
         parent: "sun",
         type: 'planet',
-        radius: 10,
-        zoom: {size: 10, speed: 1000},
+        radius: 100,
+        zoom: {size: 2, speed: 1000},
         features: {color: 0xee96ff},
         orbit:{
           angle:98, 
           period: 12, 
-          distance: 140
+          distance: 1400
         }
       },
       {
         name: 'building',
         parent: "planet2",
-        type: 'surface',
-        radius: 0.6,
-        zoom: {size: 10, speed: 2000},
+        type: 'planet',
+        radius: 6,
+        zoom: {size: 20, speed: 2000},
         features: {color: 0xff3333},
         orbit:{
           angle: 98, 
           period: 12, 
-          distance: 15
+          distance: 150
         }
       },
       {
         name: 'moon2',
-        radius: 5,
+        radius: 50,
         parent: "planet2",
         type: 'planet',
-        zoom: {size: 20, speed: 1000},
+        zoom: {size: 4, speed: 1000},
         features: {color: 0x666666},
         orbit: {
           angle:45, 
           period: 3, 
-          distance: 20
+          distance: 200
         }
       },
       {
         name: 'planet3',
         parent: "sun",
         type: 'planet',
-        radius: 10,
-        zoom: {size: 10, speed: 1000},
+        radius: 100,
+        zoom: {size: 2, speed: 1000},
         features: {color: 0xeeff44},
         orbit:{
           angle: 145, 
           period: 15, 
-          distance: 80
+          distance: 800
         }
       },
       {
         name: 'moon3',
-        radius: 5,
+        radius: 50,
         parent: "planet3",
         type: 'planet',
-        zoom: {size: 20, speed: 1000},
+        zoom: {size: 4, speed: 1000},
         features: {color: 0x666666},
         orbit: {
           angle: 55, 
           period: 2, 
-          distance: 20
+          distance: 200
         }
       },
       {
         name: 'meteor',
         parent: "sun",
         type: 'planet',
-        radius: 5,
-        zoom: {size: 10, speed: 1000},
+        radius: 50,
+        zoom: {size: 2, speed: 1000},
         features: {color: 0x666666},
         orbit:{
           angle: 220, 
           period: 40, 
-          distance: 300
+          distance: 3000
         }
       },
       {
         name: 'meteor2',
         parent: "sun",
         type: 'planet',
-        radius: 5,
-        zoom: {size: 10, speed: 1000},
+        radius: 50,
+        zoom: {size: 2, speed: 1000},
         features: {color: 0x666666},
         orbit:{
           angle: 40, 
           period: 40, 
-          distance: 300
+          distance: 3000
         }
       },
       {
         name: 'meteor3',
         parent: "sun",
         type: 'planet',
-        radius: 5,
-        zoom: {size: 10, speed: 1000},
+        radius: 50,
+        zoom: {size: 2, speed: 1000},
         features: {color: 0x666666},
         orbit:{
           angle: 120, 
           period: 40, 
-          distance: 300
+          distance: 3000
         }
       },
       {
         name: 'meteor4',
         parent: "sun",
         type: 'planet',
-        radius: 5,
-        zoom: {size: 10, speed: 1000},
+        radius: 50,
+        zoom: {size: 2, speed: 1000},
         features: {color: 0x666666},
         orbit:{
           angle: 160, 
           period: 40, 
-          distance: 300
+          distance: 3000
         }
       },
     ]

@@ -1,38 +1,46 @@
-// Bring in the phaser library
-import Phaser from 'phaser'
-
-// Bringing in our base example scene
-import GameScene from './scenes/Game.js'
-
+//Libraries
 import React from 'react';
 import ReactDOM from 'react-dom'
+import Phaser from 'phaser'
 
+//Components
 import App from './scenes/App';
+import Pixi from './scenes/Pixi';
+
+//Assets & Misc
+import Brain from './base/Brain'
 
 ReactDOM.render(
     <React.StrictMode>
-        <App/>
+        {/* <App/> */}
     </React.StrictMode>,
     document.querySelector('#root')
 );
 
-const config = {
-  // Configure Phaser graphics settings
-  type: Phaser.AUTO,
-  scale: {
-    parent: 'game',
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
-    width: "100%",
-    height: "100%",
-  },
+const pixi = new Pixi();
 
-}
+// Below is prototype #1 Running Phaser3, uncomment to view...
 
-// Initialize the base phaser game object (must always be done once)
-const game = new Phaser.Game(config)
+// // Bringing in our base example scene
+// import GameScene from './scenes/Game.js'
 
-// Add and auto-starting ExampleScene
-game.scene.add('GameScene', GameScene)
-game.scene.start('GameScene')
+// const config = {
+//   // Configure Phaser graphics settings
+//   type: Phaser.AUTO,
+//   scale: {
+//     parent: 'game',
+//     mode: Phaser.Scale.FIT,
+//     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
+//     width: "100%",
+//     height: "100%",
+//   },
+
+// }
+
+// // Initialize the base phaser game object (must always be done once)
+// const game = new Phaser.Game(config)
+
+// // Add and auto-starting ExampleScene
+// game.scene.add('GameScene', GameScene)
+// game.scene.start('GameScene')
 
