@@ -1,0 +1,24 @@
+{
+    "entities": [
+      {
+        "uuid": "324324324",
+        "name": "planet",
+        "parent": "sun",
+        "type": "planet",
+        "zoom": {"size": 100, "speed": 1000},
+        "features": {
+          "radius": 10,
+          "color": "0x564000",
+          "atmosphere": {
+            "size": 100,
+            "color": "0x7777ff"
+          }
+        },
+        "orbit":{
+          "angle":0, 
+          "period": 9, 
+          "distance": 2000
+        }
+      }
+    ]
+}
