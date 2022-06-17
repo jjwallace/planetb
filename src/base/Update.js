@@ -20,8 +20,6 @@ export default class Update {
 
                 var entityByUID = Brain.gameData.entities.find(e => e.uuid === entity.data.uuid)
 
-                console.log('ENT', entityByUID)
-
                 entity.x = entityByUID.location.x;
                 entity.y = entityByUID.location.y;
 

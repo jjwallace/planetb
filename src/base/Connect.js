@@ -25,12 +25,12 @@ export default class Connect {
         this.socket.emit("get gameData") 
 
         this.socket.on("gameData", data => {
-            console.log('Received Initial Game Data, ', data);
+            //console.log('Received Initial Game Data, ', data);
             if(Brain.gameData == null){
                 Brain.gameData = data;
                 Brain.spawner.spawnAll();
             }else{
-                console.log('Game Data Update', data)
+                //console.log('Game Data Update', data)
                 Brain.gameData = data;
                 Brain.update.entities();
             }
@@ -42,17 +42,7 @@ export default class Connect {
     getData(){
 
         this.socket.emit("get gameData") 
-        // this.socket.on("getgameData", data => {
-        //     console.log('Received Initial Game Data, ', data);
-        //     if(Brain.gameData == null){
-        //         Brain.gameData = data;
-        //         Brain.spawner.spawnAll();
-        //     }else{
-        //         console.log('Game Data Update', data)
-        //         Brain.gameData = data;
-        //         Brain.update.entities();
-        //     }
-        // });
+
     }
 
     // emit(title, data){
