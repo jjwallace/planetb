@@ -8,12 +8,24 @@ export default class Update {
     }
 
     entities(){
+        
         // Entities spawner
-        let entities = Brain.gameData.entities;
-        for (let index = 0; index < entities.length; index++) {
-            let entity = entities[index];
-            entity.x = myArray.find(entitiy => gameData.entities.uid === entity.data.uid).location.x;
-            entity.y = myArray.find(entitiy => gameData.entities.uid === entity.data.uid).location.y;
+        let entities = Brain.entities;
+
+        Brain.connect.getData();
+        
+        if(entities.length > 0 && entities != null){
+            for (let index = 0; index < entities.length; index++) {
+                let entity = entities[index];
+
+                var entityByUID = Brain.gameData.entities.find(e => e.uuid === entity.data.uuid)
+
+                console.log('ENT', entityByUID)
+
+                entity.x = entityByUID.location.x;
+                entity.y = entityByUID.location.y;
+
+            }
         }
     }
 }

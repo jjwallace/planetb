@@ -1,3 +1,8 @@
+//Where we left off, everything broken..
+//We can send x and y cords to client however client socket needs to update
+
+
+
 
 //Libraries
 
@@ -30,6 +35,7 @@ class Mind {
 
     
     this.update = new Update(this);
+    //this.update.updateGame();
     this.loop = new Loop(this.update);
 
   }

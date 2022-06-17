@@ -1,7 +1,7 @@
 import socketIOClient from "socket.io-client";
 import Brain from "./Brain"
 
-class Connect {
+export default class Connect {
     
     constructor(){
 
@@ -35,27 +35,40 @@ class Connect {
                 Brain.update.entities();
             }
         });
+
+        //this.getData()
     }
 
-    emit(title, data){
-        console.log("Emit Data '" + title + "' : ", data);
-        if(title == ""){
-            console.warn("Socket Emit Title Null");
-            return;
-        }
-        if(data == ""){
-            console.warn("Socket Emit Data Null");
-            return;
-        }
-        this.socket.emit(title, data) 
+    getData(){
+
+        this.socket.emit("get gameData") 
+        // this.socket.on("getgameData", data => {
+        //     console.log('Received Initial Game Data, ', data);
+        //     if(Brain.gameData == null){
+        //         Brain.gameData = data;
+        //         Brain.spawner.spawnAll();
+        //     }else{
+        //         console.log('Game Data Update', data)
+        //         Brain.gameData = data;
+        //         Brain.update.entities();
+        //     }
+        // });
     }
+
+    // emit(title, data){
+    //     console.log("Emit Data '" + title + "' : ", data);
+    //     if(title == ""){
+    //         console.warn("Socket Emit Title Null");
+    //         return;
+    //     }
+    //     if(data == ""){
+    //         console.warn("Socket Emit Data Null");
+    //         return;
+    //     }
+    //     this.socket.emit(title, data) 
+    // }
 
     createdTime() {
         return this._createdTime.toISOString();
     }
 }
-
-const instance = new Connect();
-Object.freeze(instance);
-
-export default instance;

@@ -23,6 +23,7 @@ export default class Socket {
 
         //Transmissions and Client Requests
         socket.on('get gameData', () => {
+            console.log('REQUEST DATA')
             socket.emit('gameData', Mind.gameData);
         });
 

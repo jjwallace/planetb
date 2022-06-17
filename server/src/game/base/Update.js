@@ -2,7 +2,7 @@
 
 
 //Components
-import orbit from "./utils/orbit";
+import { orbit } from "./utils/orbit";
 
 export default class Update {
     
@@ -17,18 +17,19 @@ export default class Update {
     }
 
     entities(){
-        // Entities spawner
-
-        const calcOrbit = orbit('http');
-
-        console.log('Update Mind object: ' , calcOrbit)
-
         let entities = this.mind.gameData.entities;
         for (let index = 0; index < entities.length; index++) {
             let entity = entities[index];
-            if(entity.parent != null || entitiy.parent != undefined){
-                entity.loc = orbit(entity.parent, entity)
-                console.log(entity.loc);
+
+            if(entity.parent != ""){
+
+                let parentObject = entities.find(e => e.name === entity.parent)
+                //console.log('PARENT: ' , parentObject.location.x)
+
+                let loc = orbit(parentObject, entity)
+
+                entity.location = loc;
+                //console.log(loc);
             }
         }
     }

@@ -111,7 +111,7 @@ export default class Pixi {
 
     // Listen for animate update
     Brain.app.ticker.add((delta) => {
-      //orbit();
+      Brain.tick();
     });
     
   } 

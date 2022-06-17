@@ -24,13 +24,18 @@ class Brain {
     this.time = new Date();    
     
     this.app = null;
+    this.socket = null;
     this.viewport = null;
     this.entities = [];
     this.gameData = null;
 
     this.spawner = new Spawner();
     this.update = new Update();
-    
+    this.connect = new Connect();
+  }
+
+  tick(){
+    this.update.entities();
   }
 
   entityUpdateZoom() {
