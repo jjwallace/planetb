@@ -1,0 +1,42 @@
+{
+    "entities": [
+      {
+        "uuid": "324324324",
+        "name": "sun",
+        "parent": "sun",
+        "type": "planet",
+        "location": {"x": 0, "y": 0},
+        "zoom": {"size": 100, "speed": 1000},
+        "features": {
+          "size": 100,
+          "color": "0xffff44"
+        },
+        "orbit":{
+          "angle":0, 
+          "period": 9, 
+          "distance": 2000
+        }
+      },
+      {
+        "uuid": "3224324324",
+        "name": "earth",
+        "parent": "sun",
+        "type": "planet",
+        "location": {"x": 500, "y": 0},
+        "zoom": {"size": 100, "speed": 1000},
+        "features": {
+          "size": 50,
+          "color": "0x33cc33",
+          "atmosphere": {
+            "size": 120,
+            "color": "0x0099ff"
+          }
+        },
+        "orbit":{
+          "angle":0, 
+          "period": 9, 
+          "distance": 2000
+        }
+      }
+    ]
+}

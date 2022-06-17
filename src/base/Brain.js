@@ -1,9 +1,15 @@
+//Libraries
 import { Container, Point } from 'pixi.js';
 import * as PIXI from 'pixi.js';
 import * as PixiPlugin from 'gsap/PixiPlugin';
 
+//Components
+import Connect from "./Connect";
+import Spawner from './Spawner';
+import Update from './Update';
+
 //objects
-//import solarData from './assets/data/solar.json'
+//import solarData from './data/solar.json'
 
 //import Renderer from './Renderer';
 
@@ -20,9 +26,11 @@ class Brain {
     this.app = null;
     this.viewport = null;
     this.entities = [];
-    //this.solarData = JSON.parse(solarData);
-    
+    this.gameData = null;
 
+    this.spawner = new Spawner();
+    this.update = new Update();
+    
   }
 
   entityUpdateZoom() {

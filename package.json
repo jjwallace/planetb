@@ -5,8 +5,8 @@
   "scripts": {
     "start": "npm run dev",
     "audio": "audiosprite --loop freeVertexStudioTrack1 --loop freeVertexStudioTrack2 --output public/assets/audio/gameAudioSprite raw_assets/audio/*.mp3",
-    "dev": "esbuild src/main.jsx --serve=3000 --servedir=public --bundle --sourcemap --target=es6 --define:__DEV__=true --outfile=public/bundle.js --loader:.js=jsx",
-    "prod": "esbuild src/main.jsx --serve=3000 --servedir=public --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js --loader:.js=jsx",
+    "dev": "esbuild src/main.jsx --serve=8000 --servedir=public --bundle --sourcemap --target=es6 --define:__DEV__=true --outfile=public/bundle.js --loader:.js=jsx",
+    "prod": "esbuild src/main.jsx --serve=8000 --servedir=public --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js --loader:.js=jsx",
     "build": "esbuild src/main.jsx --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js --loader:.js=jsx",
     "preinstall": "npx npm-force-resolutions"
   },
@@ -44,6 +44,7 @@
     "pixi.js": "^6.4.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "socket.io-client": "^4.5.1",
     "uuid": "^8.3.2"
   }
 }

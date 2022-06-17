@@ -1,4 +1,4 @@
-export function orbit(originObject, orbitObject) {
+export default function orbit(originObject, orbitObject) {
       
     orbitObject.orbit.angle +=  (1.0 / orbitObject.orbit.period);
     var ang = orbitObject.orbit.angle * 2.0 * Math.PI / 180.0;

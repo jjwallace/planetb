@@ -1,17 +1,17 @@
-import { Application } from 'pixi.js';
-import PixiPlanet from '../entities/PixiPlanet';
-
 //Libraries
 import React from 'react';
 import ReactDOM from 'react-dom'
 import * as PIXI from 'pixi.js';
+import { Application } from 'pixi.js';
 import { Viewport } from 'pixi-viewport';
 
 //Components
+import Brain from '../base/Brain'
+import Ticker from '../base/Ticker'
+import orbit from '../base/utils/orbit'
 
 //Assets & Misc
-import Brain from '../base/Brain'
-import Entity from '../../../../sent/loneserver/frontend/app/displayobjects/Entity/Entity';
+import PixiPlanet from '../entities/PixiPlanet';
 
 export default class Pixi {
   constructor() {
@@ -55,8 +55,8 @@ export default class Pixi {
         .decelerate()
         .clampZoom(
           { 
-            minWidth: window.innerWidth, 
-            minHeight: window.innerHeight ,
+            minWidth: window.innerWidth / 4, 
+            minHeight: window.innerHeight / 4,
             maxWidth: window.innerWidth * 20, 
             maxHeight: window.innerHeight * 20 ,
           }
@@ -71,25 +71,31 @@ export default class Pixi {
 
       Brain.app.stage.addChild(Brain.viewport)
     }
-  
-    const planet = new PixiPlanet({name: 'planet', x:0, y: 0});
-    planet.x = 0
-    planet.y = 0
-    Brain.viewport.addChild(planet);
-    planet.anchor.set(0.5);
+ 
+    // console.log("Solar Data", Brain.solarData.entities[0])
+    // const planet = new PixiPlanet(Brain.solarData.entities[0]);
+    // planet.x = 0
+    // planet.y = 0
+    // Brain.viewport.addChild(planet);
+    // planet.anchor.set(0.5);
 
-    Brain.viewport.moveCenter({x: 0, y:0})
+    
 
 
 
-    //entities spawner
-    // for (let index = 0; index < Brain.solarData.length; index++) {
-    //   let entity = new PixiPlanet(Brain.solarData[index]);
-    //   Brain.entities.push(entity)
-    //   console.log(entity);
+    // // Entities spawner
+    // for (let index = 0; index < Brain.solarData.entities.length; index++) {
+
+    //   let entity = new PixiPlanet(Brain.solarData.entities[index]);
+    //   entity.x = Brain.solarData.entities[index].location.x;
+    //   entity.y = Brain.solarData.entities[index].location.y;
+    //   Brain.entities.push(entity);
+    //   Brain.viewport.addChild(entity);
+
+    //   console.log('Entity Created', entity);
     // }
 
-
+    Brain.viewport.moveCenter({x: 0, y:0})
 
 
 
@@ -103,14 +109,11 @@ export default class Pixi {
     //   }
     // )
 
-
     // Listen for animate update
     Brain.app.ticker.add((delta) => {
-      // just for fun, let's rotate mr rabbit a little
-      // delta is 1 if running at 100% performance
-      // creates frame-independent transformation
-      planet.rotation += 0.01 * delta;
+      //orbit();
     });
+    
   } 
 }
 
