@@ -20,9 +20,7 @@ const server = http.createServer(app);
 let io = new Server(server, { cors: { origin: '*' } });
 let port = process.env.PORT || 3000;
 
-
 new Socket(io);
-
 
 server.listen(port, () => {
   console.log('[INFO] Listening on *:' + port);

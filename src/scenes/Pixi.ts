@@ -38,6 +38,7 @@ export default class Pixi {
         //REFER TO PIXI VIEWPORT PLUGIN DOCS ON GIT
       });
     
+      // Incase we want another viewport, we can create one here. IE: Minimap
       // Brain.uiContainer = new PIXI.Container();
       // Brain.viewport.addChild(Brain.uiContainer);
     
@@ -45,8 +46,7 @@ export default class Pixi {
       //   screenWidth: window.innerWidth,
       //   screenHeight: window.innerHeight
       // });
-    
-    
+  
       //INIT VIEWPORT
       Brain.viewport
         .drag()
@@ -71,33 +71,8 @@ export default class Pixi {
 
       Brain.app.stage.addChild(Brain.viewport)
     }
- 
-    // console.log("Solar Data", Brain.solarData.entities[0])
-    // const planet = new PixiPlanet(Brain.solarData.entities[0]);
-    // planet.x = 0
-    // planet.y = 0
-    // Brain.viewport.addChild(planet);
-    // planet.anchor.set(0.5);
-
-    
-
-
-
-    // // Entities spawner
-    // for (let index = 0; index < Brain.solarData.entities.length; index++) {
-
-    //   let entity = new PixiPlanet(Brain.solarData.entities[index]);
-    //   entity.x = Brain.solarData.entities[index].location.x;
-    //   entity.y = Brain.solarData.entities[index].location.y;
-    //   Brain.entities.push(entity);
-    //   Brain.viewport.addChild(entity);
-
-    //   console.log('Entity Created', entity);
-    // }
 
     Brain.viewport.moveCenter({x: 0, y:0})
-
-
 
     // Brain.viewport.snapZoom(
     //   {
@@ -117,10 +92,4 @@ export default class Pixi {
   } 
 }
 
-
-
-
-
 //document.body.appendChild(app.view);
-
-

@@ -1,4 +1,5 @@
 import { Sprite, Texture, Graphics } from 'pixi.js';
+import Brain from '../base/Brain'
 
 export default class PixiPlanet extends Sprite {
     constructor(entityData) {
@@ -45,10 +46,13 @@ export default class PixiPlanet extends Sprite {
         //Settings
         this.interactive = true;
         this.click = function(ev) { 
-            console.log(this.data.name); 
+            //console.log(this.data.name); 
+            Brain.navigator.navFollow(this);
         }
         this.mouseover = function(ev) { 
             console.log("over"); 
         }
+
+        Brain.viewport.addChild(this);
     }
 }

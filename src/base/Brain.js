@@ -7,6 +7,7 @@ import * as PixiPlugin from 'gsap/PixiPlugin';
 import Connect from "./Connect";
 import Spawner from './Spawner';
 import Update from './Update';
+import Navigator from './Navigator';
 
 //objects
 //import solarData from './data/solar.json'
@@ -32,13 +33,17 @@ class Brain {
     this.spawner = new Spawner();
     this.update = new Update();
     this.connect = new Connect();
+    this.navigator = new Navigator(this);
   }
 
   tick(){
     this.update.entities();
+    this.navigator.targetLockUpdate();
   }
 
   entityUpdateZoom() {
+    console.log('ZOOM UPDATE', this.viewport.scale)
+
     // const minZoom = 3;
     // const maxZoom = 7;
     // let zoom = this.viewport.scale;
