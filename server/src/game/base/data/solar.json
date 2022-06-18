@@ -8,7 +8,7 @@
       "location": {"x": 0, "y": 0},
       "zoom": {"size": 100, "speed": 1000},
       "features": {
-        "size": 100,
+        "size": 400,
         "color": "0xffff44"
       },
       "orbit":{
@@ -72,7 +72,7 @@
       },
       "orbit":{
         "angle":280, 
-        "period": 450, 
+        "period": 350, 
         "distance": 1000
       }
     },
@@ -91,6 +91,77 @@
         "angle":0, 
         "period": 9, 
         "distance": 200
+      }
+    },
+    {
+      "uuid": "124321232233423421",
+      "name": "jupiter",
+      "parent": "sun",
+      "type": "planet",
+      "location": {"x": 500, "y": 0},
+      "zoom": {"size": 100, "speed": 100},
+      "features": {
+        "size": 140,
+        "color": "0xff6622",
+        "atmosphere": {
+          "size": 120,
+          "color": "0x33cc99"
+        }
+      },
+      "orbit":{
+        "angle":280, 
+        "period": 450, 
+        "distance": 2500
+      }
+    },
+    {
+      "uuid": "124124214341",
+      "name": "moon",
+      "parent": "jupiter",
+      "type": "planet",
+      "location": {"x": 500, "y": 0},
+      "zoom": {"size": 100, "speed": 1000},
+      "features": {
+        "size": 20,
+        "color": "0xcccccc"
+      },
+      "orbit":{
+        "angle":0, 
+        "period": 9, 
+        "distance": 500
+      }
+    },
+    {
+      "uuid": "12412421121218884341",
+      "name": "moon",
+      "parent": "sun",
+      "type": "planet",
+      "location": {"x": 500, "y": 0},
+      "zoom": {"size": 100, "speed": 1000},
+      "features": {
+        "size": 20,
+        "color": "0xcccccc"
+      },
+      "orbit":{
+        "angle":0, 
+        "period": 20, 
+        "distance": 500
+      }
+    },{
+      "uuid": "12418889786543",
+      "name": "base",
+      "parent": "earth",
+      "type": "surface",
+      "location": {"x": 500, "y": 0, "r": 0},
+      "zoom": {"size": 100, "speed": 1000},
+      "features": {
+        "size": 20,
+        "color": "0xcccccc"
+      },
+      "orbit":{
+        "angle":0, 
+        "period": 20, 
+        "distance": 500
       }
     }
   ]
