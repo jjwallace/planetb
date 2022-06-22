@@ -16,10 +16,17 @@ npm install
 
 ## Running
 
+
+### Client
 ```bash
 npm start
 ```
 
+### Server
+```bash
+cd server
+npm start
+```
 
 ## Archive From Boilerplate
 # Phaser 3 + ESBuild + ES6 Template

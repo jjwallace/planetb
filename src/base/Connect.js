@@ -1,9 +1,9 @@
 import socketIOClient from "socket.io-client";
-import Brain from "./Brain"
+//import Brain from "./Brain"
 
 export default class Connect {
     
-    constructor(){
+    constructor(Brain){
 
         const config = {
             endpoint: window.location.hostname + ":3000"
@@ -43,6 +43,10 @@ export default class Connect {
 
         this.socket.emit("get gameData") 
 
+    }
+
+    sendKeyboard(Brain){
+        this.socket.emit("keyboard", Brain.keyboard);
     }
 
     // emit(title, data){

@@ -7,8 +7,7 @@ export default class Navigator {
         this.lockedEntity = null;
         this.targetLock = false;
 
-        // Brain.viewport.on('snap-zoom-start', () => {this.targetLock = false});
-        // Brain.viewport.on('snap-zoom-end', () => {this.targetLock = true});
+        
     }
 
     navFollow(entity){
@@ -28,12 +27,12 @@ export default class Navigator {
 
         //console.log(entity.data.features.size)
 
-        //this.brain.viewport.zoom(entity.data.features.size/100)
+        this.brain.viewport.zoom(entity.data.features.size/100)
 
-        // this.brain.viewport.snapZoom(
+        //  this.brain.viewport.snapZoom(
         //     {
         //         center: {x: entity.x, y: entity.y},
-        //         time: 1000,
+        //         time: 100,
         //         interupt: false,
         //         width: 400,
         //         ease: "easeInOutCubic",

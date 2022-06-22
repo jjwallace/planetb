@@ -23,8 +23,14 @@ export default class Socket {
 
         //Transmissions and Client Requests
         socket.on('get gameData', () => {
-            console.log('REQUEST DATA')
+            //console.log('REQUEST DATA')
             socket.emit('gameData', Mind.gameData);
+        });
+
+        //Transmissions and Client Requests
+        socket.on('keyboard', (keyboard) => {
+          console.log('receieved keybaord', keyboard);
+          Mind.keyboard = keyboard;
         });
 
         //Lost Connections

@@ -1,6 +1,6 @@
 import { Sprite, Texture, Graphics } from 'pixi.js';
 
-export default class PixiPlanet extends Sprite {
+export default class SurfaceObject extends Sprite {
     constructor() {
         super();
 

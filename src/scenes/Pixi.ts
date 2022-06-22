@@ -9,6 +9,7 @@ import { Viewport } from 'pixi-viewport';
 import Brain from '../base/Brain'
 import Ticker from '../base/Ticker'
 import orbit from '../base/utils/orbit'
+import Background from '../entities/Background';
 
 //Assets & Misc
 import PixiPlanet from '../entities/PixiPlanet';
@@ -18,7 +19,6 @@ export default class Pixi {
     console.log('HELLO WORLD, I am running Pixi');
 
     Brain.app = new Application({
-      backgroundColor: 0x333,
       width: window.innerWidth,
       height: window.innerHeight,
       antialias: true
@@ -26,6 +26,9 @@ export default class Pixi {
     });
 
     document.body.appendChild(Brain.app.view)
+
+    // Brain.background = new Background();
+    // Brain.app.stage.addChild(Brain.background)
 
     if (Brain.viewport == null) {
       //CREATE VIEWPORT
@@ -55,8 +58,8 @@ export default class Pixi {
         .decelerate()
         .clampZoom(
           { 
-            minWidth: window.innerWidth / 4, 
-            minHeight: window.innerHeight / 4,
+            minWidth: window.innerWidth / 20, 
+            minHeight: window.innerHeight / 20,
             maxWidth: window.innerWidth * 20, 
             maxHeight: window.innerHeight * 20 ,
           }
@@ -66,11 +69,17 @@ export default class Pixi {
       Brain.viewport.on('zoomed-end', () => Brain.entityUpdateZoom());
       Brain.viewport.on('snap-zoomed-end', () => Brain.entityUpdateZoom());
       Brain.viewport.on('zoomed-end', () => Brain.entityUpdateZoom());
+      Brain.viewport.on('snap-zoom-start', () => {Brain.navigator.targetLock = false; console.log('start')});
+      Brain.viewport.on('snap-zoom-end', () => {Brain.navigator.targetLock = true; console.log('stop')});
     
       //DOCUMENTS: https://davidfig.github.io/pixi-viewport/
 
+      
+
       Brain.app.stage.addChild(Brain.viewport)
     }
+
+
 
     Brain.viewport.moveCenter({x: 0, y:0})
 

@@ -1,6 +1,12 @@
 import Brain from '../base/Brain'
 
 import PixiPlanet from '../entities/PixiPlanet';
+import Unit from '../entities/Unit';
+
+
+import SurfaceEntity from '../entities/SurfaceEntity';
+
+
 import StarField from '../entities/StarField';
 
 
@@ -23,17 +29,24 @@ export default class Spawner {
 
         // Entities spawner
         for (let index = 0; index < Brain.gameData.entities.length; index++) {
+            let entityData = Brain.gameData.entities;
+            let entity = null
 
-            let entity = new PixiPlanet(Brain.gameData.entities[index]);
-            entity.data = Brain.gameData.entities[index];
-            entity.x = Brain.gameData.entities[index].location.x;
-            entity.y = Brain.gameData.entities[index].location.y;
+            if(entityData[index].type == 'planet'){
+                entity = new PixiPlanet(entityData[index]);
+            }else if(entityData[index].type == 'unit'){
+                entity = new Unit(entityData[index]);
+            }
+
+            entity.data = entityData[index];
+            entity.x = entityData[index].location.x;
+            entity.y = entityData[index].location.y;
+
+
+
+
             Brain.entities.push(entity);
-            //Brain.viewport.addChild(entity);  //This is now done on the entity object itself
-    
             console.log('Entity Created', entity);
-
-            
         }
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import gsap from "gsap";
 
-class Button extends React.Component {
+export default class ButtonLock extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {button: 1};
@@ -38,7 +38,7 @@ class Button extends React.Component {
 			padding: '3px',
 			margin: '5px',
 			width: '100px',
-			height: '100px',
+			height: '50px',
 		}
 
 		const imageStyle = {
@@ -55,5 +55,3 @@ class Button extends React.Component {
 		);
 	}
 }
-
-export default Button;

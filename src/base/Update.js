@@ -22,6 +22,7 @@ export default class Update {
 
                 entity.x = entityByUID.location.x;
                 entity.y = entityByUID.location.y;
+                entity.angle = entityByUID.location.r;
 
             }
         }

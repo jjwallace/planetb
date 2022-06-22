@@ -2,12 +2,15 @@
 import { Container, Point } from 'pixi.js';
 import * as PIXI from 'pixi.js';
 import * as PixiPlugin from 'gsap/PixiPlugin';
+import * as Keyboard from 'pixi.js-keyboard';
 
 //Components
 import Connect from "./Connect";
 import Spawner from './Spawner';
 import Update from './Update';
 import Navigator from './Navigator';
+import { LEFT } from 'phaser';
+
 
 //objects
 //import solarData from './data/solar.json'
@@ -32,17 +35,47 @@ class Brain {
 
     this.spawner = new Spawner();
     this.update = new Update();
-    this.connect = new Connect();
+    this.connect = new Connect(this);
     this.navigator = new Navigator(this);
+    this.background = null;
+
+    this.selected = null;
+    this.keyboard = {
+      ArrowUp: false,
+      ArrowDown: false,
+      ArrowLeft: false,
+      ArrowRight: false,
+    }
+
+    Keyboard.events.on('pressed', null, (keyCode, event) => { 
+      if(keyCode.includes("Arrow")){
+        //let key = keyCode.replace("Arrow")
+        this.keyboard[keyCode] = true;
+        this.connect.sendKeyboard(this);
+      }   
+      console.log('pressed', keyCode); 
+    })
+    Keyboard.events.on('released', null, (keyCode, event) => { 
+      if(keyCode.includes("Arrow")){
+        //let key = keyCode.replace("Arrow")
+        this.keyboard[keyCode] = false;
+        this.connect.sendKeyboard(this);
+      }   
+      console.log('pressed', keyCode); 
+    });
   }
 
   tick(){
     this.update.entities();
     this.navigator.targetLockUpdate();
+    Keyboard.update();
   }
 
   entityUpdateZoom() {
     console.log('ZOOM UPDATE', this.viewport.scale)
+
+    // this.background.width = this.viewport.scale * 1000;
+    // this.background.height = this.viewport.scale * 1000;
 
     // const minZoom = 3;
     // const maxZoom = 7;

@@ -151,12 +151,31 @@
       "uuid": "12418889786543",
       "name": "base",
       "parent": "earth",
-      "type": "surface",
+      "type": "unit",
       "location": {"x": 500, "y": 0, "r": 0},
       "zoom": {"size": 100, "speed": 1000},
       "features": {
         "size": 20,
-        "color": "0xcccccc"
+        "color": "0xcccccc",
+        "image": "base"
+      },
+      "orbit":{
+        "angle":0, 
+        "period": 20, 
+        "distance": 500
+      }
+    },{
+      "uuid": "124188343223489786543",
+      "name": "base",
+      "parent": "",
+      "type": "unit",
+      "location": {"x": 0, "y": 0, "r": 0},
+      "acc": {"x": 10, "y": 0, "r": 0},
+      "zoom": {"size": 100, "speed": 1000},
+      "features": {
+        "size": 20,
+        "color": "0xffffff",
+        "image": "solar"
       },
       "orbit":{
         "angle":0, 

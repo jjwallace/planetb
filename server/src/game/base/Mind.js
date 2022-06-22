@@ -24,15 +24,22 @@ class Mind {
     }
     this.time = new Date();    
     
-    this.solarData = solarData
-    console.log('Here is the data: ', solarData)
+    this.solarData = solarData;
+    console.log('Here is the data: ', solarData);
 
     this.gameData = {
       gameState: 'pause',
       players: [],
       entities: solarData.entities
     }
-
+    
+    this.selected = null;
+    this.keyboard = {
+      ArrowUp: false,
+      ArrowDown: false,
+      ArrowLeft: false,
+      ArrowRight: false,
+    }
     
     this.update = new Update(this);
     //this.update.updateGame();

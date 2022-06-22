@@ -9,6 +9,11 @@ export function orbit(originObject, orbitObject) {
       x: Math.cos(ang) * r - Math.sin(ang) * r + originObject.location.x,
       y: Math.sin(ang) * r + Math.cos(ang) * r + originObject.location.y
     };
+
+    // return {
+    //   x: 0,
+    //   y: 0
+    // };
   } 
   
   // rotate_point ref switched to distance ref

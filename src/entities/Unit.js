@@ -1,38 +1,41 @@
-import Phaser from 'phaser'
-import * as dat from 'dat.gui';
+import { Sprite, Texture, AnimatedSprite } from 'pixi.js';
+import Brain from '../base/Brain';
+import Entity from './Entity';
 
-class Unit extends Phaser.GameObjects.Container {
-	constructor(config) {
-		super(config.scene, 0, 0);
-		var object = config.object;
-		
-		console.log("PLANET CREATED", config)
+export default class Unit extends Entity {
+    constructor(entity) {
+        super();
 
-		var planetBody = config.scene.add.circle(0, 0, object.radius, object.features.color);
-		console.log(object.features.atmosphere)
-		if(object.features.atmosphere != undefined){
-			//if ('key' in myObj)
-			var atmosphere = config.scene.add.circle(0, 0, object.radius + object.features.atmosphere.size, object.features.atmosphere.color);
-			this.add(atmosphere)
-		}
+        this.data = entity
 
+        // Loader.shared.add("./assets/sprites/" + unit.image + ".json").load(setup);
+        
+        // let sheet = Loader.shared.resources["images/spritesheet.json"].spritesheet;
 
-		var base = new Phaser.GameObjects.Sprite(this.scene, 0, -object.radius, "base");
+        // this.interactive = true;
+        // this.texture = Texture.from('./assets/sprites/' + unit.image + '.png');
 
-		base.setOrigin(0.5,0.95) 
-		base.setScale(0.02);
-		
-		config.scene.add.existing(this);
-		//config.scene.add.existing(base);
-		
-		
-		this.add(planetBody)
-		this.add(base)
-	}
+        // let unitSprite = new AnimatedSprite(sheet.animations["anim_name"]);
 
-	// preUpdate(time, delta) {
-    //     super.preUpdate(time, delta);
-    // }
+        const unitSprite = Sprite.from('./assets/sprites/' + entity.features.image + '.png');
+
+        this.addChild(unitSprite);
+        Brain.viewport.addChild(this);
+
+        //this.anchor.set(0.5,1);
+
+        //Settings
+        this.interactive = true;
+        this.click = function(ev) { 
+            //console.log(this.data.name); 
+            Brain.navigator.navFollow(this);
+            Brain.selected = this.data.uuid;
+            console.log(Brain.selected)
+        }
+        this.mouseover = function(ev) { 
+            console.log("over"); 
+        }
+
+        //this.addChild(graphics);
+    }
 }
-
-export default Unit;

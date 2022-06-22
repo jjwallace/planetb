@@ -2,6 +2,8 @@
 
 
 //Components
+import Mind from "./Mind";
+import { forces } from "./utils/forces";
 import { orbit } from "./utils/orbit";
 
 export default class Update {
@@ -14,6 +16,27 @@ export default class Update {
 
     updateGame(){
         this.entities();
+        this.updateKeyboard();
+    }
+
+    updateKeyboard(){
+        //Below Code is keyboard input for a unit
+        let entities = this.mind.gameData.entities;
+        
+        if(this.mind.selected != null){
+            let selectedEntity = entities.find(o => o.uuid === Mind.selected);
+            console.log(selectedEntity);
+
+            if(Mind.keyboard.ArrowLeft == true){
+                selectedEntity.acc.r -= 2
+            }
+            if(Mind.keyboard.ArrowRight == true){
+                selectedEntity.acc.r += 2
+            }
+            if(Mind.keyboard.ArrowUp == true){
+                
+            }
+        }
     }
 
     entities(){
@@ -21,7 +44,9 @@ export default class Update {
         for (let index = 0; index < entities.length; index++) {
             let entity = entities[index];
 
-            if(entity.parent != ""){
+            //console.log(entity)
+
+            if(entity.parent != "" && 'location' in entity){
 
                 let parentObject = entities.find(e => e.name === entity.parent)
                 //console.log('PARENT: ' , parentObject.location.x)
@@ -30,6 +55,19 @@ export default class Update {
 
                 entity.location = loc;
                 //console.log(loc);
+            }
+
+            //Lets check if any entites have acceleration force
+            if ('location' in entity && 'acc' in entity){
+                if ('x' in entity.location){
+                    entity.location.x += entity.acc.x;
+                }
+                if ('y' in entity.location){
+                    entity.location.y += entity.acc.y;
+                }
+                if ('c' in entity.location){
+                    entity.location.c += entity.acc.c;
+                }
             }
         }
     }

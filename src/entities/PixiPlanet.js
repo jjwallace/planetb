@@ -39,7 +39,6 @@ export default class PixiPlanet extends Sprite {
         // Boundry Circle
         graphics.lineStyle(2, 0xFEEB77, 1);
         graphics.drawCircle(0, 0, diameter  * 5);
-        graphics.endFill();
 
         this.addChild(graphics);
 
@@ -48,6 +47,7 @@ export default class PixiPlanet extends Sprite {
         this.click = function(ev) { 
             //console.log(this.data.name); 
             Brain.navigator.navFollow(this);
+            Brain.selected(this.data.uuid);
         }
         this.mouseover = function(ev) { 
             console.log("over"); 
