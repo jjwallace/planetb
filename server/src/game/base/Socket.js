@@ -21,17 +21,24 @@ export default class Socket {
         Mind.gameData.players.push({id: socket.id, x:0, y:0});
         console.log('Player List: ', Mind.gameData.players);
 
-        //Transmissions and Client Requests
+        //Transmissions and Client Requests *************************************************
         socket.on('get gameData', () => {
             //console.log('REQUEST DATA')
             socket.emit('gameData', Mind.gameData);
         });
 
-        //Transmissions and Client Requests
         socket.on('keyboard', (keyboard) => {
-          console.log('receieved keybaord', keyboard);
+          //console.log('receieved keybaord', keyboard);
           Mind.keyboard = keyboard;
+          
         });
+
+        socket.on('select', (selected) => {
+          console.log('receieved selected', selected);
+          Mind.selected = selected;
+          
+        });
+        //***********************************************************************************
 
         //Lost Connections
         socket.on('disconnect', () => {

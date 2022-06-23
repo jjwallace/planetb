@@ -5,6 +5,8 @@ export default class Connect {
     
     constructor(Brain){
 
+        this.brain = Brain;
+
         const config = {
             endpoint: window.location.hostname + ":3000"
         }
@@ -39,10 +41,12 @@ export default class Connect {
         //this.getData()
     }
 
+    sendSelected(){
+        this.socket.emit("select", this.brain.selected) 
+    }
+
     getData(){
-
         this.socket.emit("get gameData") 
-
     }
 
     sendKeyboard(Brain){

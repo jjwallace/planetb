@@ -61,7 +61,7 @@ class Brain {
         this.keyboard[keyCode] = false;
         this.connect.sendKeyboard(this);
       }   
-      console.log('pressed', keyCode); 
+      console.log('released', keyCode); 
     });
   }
 

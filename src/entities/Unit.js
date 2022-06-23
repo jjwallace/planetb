@@ -29,8 +29,8 @@ export default class Unit extends Entity {
         this.click = function(ev) { 
             //console.log(this.data.name); 
             Brain.navigator.navFollow(this);
-            Brain.selected = this.data.uuid;
-            console.log(Brain.selected)
+            Brain.navigator.select(this.data.uuid);
+            
         }
         this.mouseover = function(ev) { 
             console.log("over"); 

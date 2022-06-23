@@ -169,8 +169,8 @@
       "name": "base",
       "parent": "",
       "type": "unit",
-      "location": {"x": 0, "y": 0, "r": 0},
-      "acc": {"x": 10, "y": 0, "r": 0},
+      "location": {"x": 900, "y": 0, "r": 0},
+      "acc": {"x": 0, "y": 0, "r": 0},
       "zoom": {"size": 100, "speed": 1000},
       "features": {
         "size": 20,

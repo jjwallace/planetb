@@ -10,6 +10,12 @@ export default class Navigator {
         
     }
 
+    select(uuid){
+        this.brain.selected = uuid;
+        console.log('SELECTED', uuid)
+        this.brain.connect.sendSelected()
+    }
+
     navFollow(entity){
         console.log('CLICK: ', entity); 
 

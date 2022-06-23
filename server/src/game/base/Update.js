@@ -27,12 +27,17 @@ export default class Update {
             let selectedEntity = entities.find(o => o.uuid === Mind.selected);
             console.log(selectedEntity);
 
-            if(Mind.keyboard.ArrowLeft == true){
-                selectedEntity.acc.r -= 2
+            if ('acc' in selectedEntity){
+                if ('r' in selectedEntity.acc){
+                    if(Mind.keyboard.ArrowLeft == true){
+                        selectedEntity.acc.r -= 2
+                    }
+                    if(Mind.keyboard.ArrowRight == true){
+                        selectedEntity.acc.r += 2
+                    }
+                }
             }
-            if(Mind.keyboard.ArrowRight == true){
-                selectedEntity.acc.r += 2
-            }
+
             if(Mind.keyboard.ArrowUp == true){
                 
             }
@@ -44,7 +49,7 @@ export default class Update {
         for (let index = 0; index < entities.length; index++) {
             let entity = entities[index];
 
-            //console.log(entity)
+            //entity = forces(entity)
 
             if(entity.parent != "" && 'location' in entity){
 
@@ -52,6 +57,7 @@ export default class Update {
                 //console.log('PARENT: ' , parentObject.location.x)
 
                 let loc = orbit(parentObject, entity)
+                
 
                 entity.location = loc;
                 //console.log(loc);

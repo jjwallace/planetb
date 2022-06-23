@@ -47,7 +47,7 @@ export default class PixiPlanet extends Sprite {
         this.click = function(ev) { 
             //console.log(this.data.name); 
             Brain.navigator.navFollow(this);
-            Brain.selected(this.data.uuid);
+            Brain.navigator.select(this.data.uuid);
         }
         this.mouseover = function(ev) { 
             console.log("over"); 
