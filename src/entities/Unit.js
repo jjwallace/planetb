@@ -18,11 +18,12 @@ export default class Unit extends Entity {
         // let unitSprite = new AnimatedSprite(sheet.animations["anim_name"]);
 
         const unitSprite = Sprite.from('./assets/sprites/' + entity.features.image + '.png');
+        unitSprite.anchor.set(0.5, 0.5);
 
         this.addChild(unitSprite);
         Brain.viewport.addChild(this);
 
-        //this.anchor.set(0.5,1);
+        
 
         //Settings
         this.interactive = true;

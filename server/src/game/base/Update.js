@@ -5,6 +5,7 @@
 import Mind from "./Mind";
 import { forces } from "./utils/forces";
 import { orbit } from "./utils/orbit";
+import { pointMove } from "./utils/pointMove";
 
 export default class Update {
     
@@ -25,21 +26,21 @@ export default class Update {
         
         if(this.mind.selected != null){
             let selectedEntity = entities.find(o => o.uuid === Mind.selected);
-            console.log(selectedEntity);
+            //console.log(selectedEntity);
 
             if ('acc' in selectedEntity){
                 if ('r' in selectedEntity.acc){
                     if(Mind.keyboard.ArrowLeft == true){
-                        selectedEntity.acc.r -= 2
+                        selectedEntity.acc.r -= 0.002
                     }
                     if(Mind.keyboard.ArrowRight == true){
-                        selectedEntity.acc.r += 2
+                        selectedEntity.acc.r += 0.002
                     }
                 }
             }
 
             if(Mind.keyboard.ArrowUp == true){
-                
+                selectedEntity.acc = pointMove(selectedEntity);
             }
         }
     }
@@ -49,7 +50,9 @@ export default class Update {
         for (let index = 0; index < entities.length; index++) {
             let entity = entities[index];
 
-            //entity = forces(entity)
+            if(entity.type == 'unit'){
+                entity = forces(entity);
+            }
 
             if(entity.parent != "" && 'location' in entity){
 
