@@ -1,5 +1,5 @@
 # PLANET B
-![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/dev/pictures/galaxy.jpg)
+![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/notes/pictures/galaxy.jpg)
 
 ## Install
 

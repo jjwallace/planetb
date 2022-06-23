@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import Phaser from 'phaser'
 
 //Components
-import App from './scenes/App';
+import App from './ui/App';
 import Pixi from './scenes/Pixi';
 
 //Assets & Misc

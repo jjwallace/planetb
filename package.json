@@ -5,9 +5,9 @@
   "scripts": {
     "start": "npm run dev",
     "audio": "audiosprite --loop freeVertexStudioTrack1 --loop freeVertexStudioTrack2 --output public/assets/audio/gameAudioSprite raw_assets/audio/*.mp3",
-    "dev": "esbuild src/main.jsx --serve=8000 --servedir=public --bundle --sourcemap --target=es6 --define:__DEV__=true --outfile=public/bundle.js --loader:.js=jsx",
-    "prod": "esbuild src/main.jsx --serve=8000 --servedir=public --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js --loader:.js=jsx",
-    "build": "esbuild src/main.jsx --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js --loader:.js=jsx",
+    "dev": "esbuild client/main.jsx --serve=8000 --servedir=public --bundle --sourcemap --target=es6 --define:__DEV__=true --outfile=public/bundle.js --loader:.js=jsx",
+    "prod": "esbuild client/main.jsx --serve=8000 --servedir=public --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js --loader:.js=jsx",
+    "build": "esbuild client/main.jsx --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js --loader:.js=jsx",
     "preinstall": "npx npm-force-resolutions"
   },
   "repository": {

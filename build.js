@@ -4,7 +4,7 @@ const cssModulesPlugin = require("esbuild-css-modules-plugin");
 esbuild
   .build({
     logLevel: "info",
-    entryPoints: ["src/main.js"],
+    entryPoints: ["client/main.js"],
     bundle: true,
     outfile: "public/bundle.js",
     watch: true,

@@ -1,5 +1,5 @@
 # PLANET B NOTES
-![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/dev/pictures/firesky.jpg)
+![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/notes/pictures/firesky.jpg)
 
 ```bash
 What are you doing in the **DEV FOLDER!**
@@ -20,4 +20,4 @@ Keith is a dork
 Early prototype working; planets/moons rotate around a parent.  We can zoom in a little and the camera doesnt suck. 
 - MR. SIR. WALLACE
 
-![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/dev/pictures/screenshot-june2.png)
+![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/notes/pictures/screenshot-june2.png)
