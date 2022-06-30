@@ -34,7 +34,7 @@ export default class Connect {
             }else{
                 //console.log('Game Data Update', data)
                 Brain.gameData = data;
-                Brain.update.entities();
+                Brain.update.serverEntities();
             }
         });
 

@@ -37,13 +37,14 @@ export default class PixiPlanet extends Sprite {
         // graphics.endFill();
 
         // Boundry Circle
-        graphics.lineStyle(2, 0xFEEB77, 1);
-        graphics.drawCircle(0, 0, diameter  * 5);
+        // graphics.lineStyle(2, 0xFEEB77, 1);
+        // graphics.drawCircle(0, 0, diameter  * 5);
 
         this.addChild(graphics);
 
         //Settings
         this.interactive = true;
+        // this.on('tap', function(ev) { 
         this.click = function(ev) { 
             //console.log(this.data.name); 
             Brain.navigator.navFollow(this);

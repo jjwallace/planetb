@@ -16,8 +16,9 @@ export default class Unit extends Entity {
         // this.texture = Texture.from('./assets/sprites/' + unit.image + '.png');
 
         // let unitSprite = new AnimatedSprite(sheet.animations["anim_name"]);
-
+        console.log(this.data.features)
         const unitSprite = Sprite.from('./assets/sprites/' + entity.features.image + '.png');
+        unitSprite.scale.set(this.data.features.size/10)
         unitSprite.anchor.set(0.5, 0.5);
 
         this.addChild(unitSprite);

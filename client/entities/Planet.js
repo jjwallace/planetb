@@ -37,19 +37,19 @@ class Planet extends Phaser.GameObjects.Container {
 		this.add(planetCore)
 		this.add(base)
 
-		//ADD BOARDER LINE
-		let graphics = config.scene.add.graphics();
+		// //ADD BOARDER LINE
+		// let graphics = config.scene.add.graphics();
 
-		var color = 0xffff00;
-		var thickness = 1;
-		var alpha = 1;
+		// var color = 0xffff00;
+		// var thickness = 1;
+		// var alpha = 1;
 
-		graphics.lineStyle(thickness, color, alpha);
+		// graphics.lineStyle(thickness, color, alpha);
 
-		var a = new Phaser.Geom.Point(0, 0);
-		var radius = object.radius * 3;
+		// var a = new Phaser.Geom.Point(0, 0);
+		// var radius = object.radius * 3;
 
-		graphics.strokeCircle(a.x, a.y, radius);
+		// graphics.strokeCircle(a.x, a.y, radius);
 
 		this.add(graphics)
 		

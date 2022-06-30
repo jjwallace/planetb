@@ -6,6 +6,8 @@
       "parent": "",
       "type": "planet",
       "location": {"x": 0, "y": 0},
+      "mass": 1000,
+      "gravity": 1,
       "zoom": {"size": 100, "speed": 1000},
       "features": {
         "size": 400,
@@ -22,7 +24,8 @@
       "name": "earth",
       "parent": "sun",
       "type": "planet",
-      "location": {"x": 500, "y": 0},
+      "location": {"x": 2000, "y": 0},
+      "mass": 400,
       "zoom": {"size": 100, "speed": 100},
       "features": {
         "size": 50,
@@ -155,7 +158,7 @@
       "location": {"x": 500, "y": 0, "r": 0},
       "zoom": {"size": 100, "speed": 1000},
       "features": {
-        "size": 20,
+        "size": 1,
         "color": "0xcccccc",
         "image": "base"
       },
@@ -165,22 +168,20 @@
         "distance": 500
       }
     },{
-      "uuid": "124188343223489786543",
+      "uuid": "1241883432234ff89786543",
       "name": "base",
       "parent": "",
       "type": "unit",
-      "location": {"x": 900, "y": 0, "r": 0},
-      "acc": {"x": 0, "y": 0, "r": 0},
+      "location": {"x": 1200, "y": 0, "r": 0},
+      "velocity": {"x": 0, "y": -3, "r": 0},
+      "mass": 5,
+      "gravity": 1,
       "zoom": {"size": 100, "speed": 1000},
       "features": {
-        "size": 20,
+        "size": 1,
         "color": "0xffffff",
-        "image": "solar"
-      },
-      "orbit":{
-        "angle":0, 
-        "period": 20, 
-        "distance": 500
+        "image": "solar",
+        "acceleration": 0.1
       }
     }
   ]

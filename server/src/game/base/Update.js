@@ -1,17 +1,16 @@
 //Libraries
 
-
 //Components
 import Mind from "./Mind";
 import { forces } from "./utils/forces";
 import { orbit } from "./utils/orbit";
+import { gravity } from "./utils/gravity";
 import { pointMove } from "./utils/pointMove";
 
 export default class Update {
     
     constructor(Mind){
         console.log('Update Active')
-
         this.mind = Mind;
     }
 
@@ -28,19 +27,20 @@ export default class Update {
             let selectedEntity = entities.find(o => o.uuid === Mind.selected);
             //console.log(selectedEntity);
 
-            if ('acc' in selectedEntity){
-                if ('r' in selectedEntity.acc){
+            if ('velocity' in selectedEntity){
+                if ('r' in selectedEntity.velocity){
                     if(Mind.keyboard.ArrowLeft == true){
-                        selectedEntity.acc.r -= 0.002
+                        selectedEntity.velocity.r -= 0.0008
                     }
                     if(Mind.keyboard.ArrowRight == true){
-                        selectedEntity.acc.r += 0.002
+                        selectedEntity.velocity.r += 0.0008
                     }
                 }
             }
 
             if(Mind.keyboard.ArrowUp == true){
-                selectedEntity.acc = pointMove(selectedEntity);
+                console.log('MOVE!!!!')
+                selectedEntity.velocity = pointMove(selectedEntity);
             }
         }
     }
@@ -50,34 +50,23 @@ export default class Update {
         for (let index = 0; index < entities.length; index++) {
             let entity = entities[index];
 
-            if(entity.type == 'unit'){
+            if('velocity' in entity && 'location' in entity){
+                entity.velocity = gravity(entities, entity)
+                //console.log(entity.location)
+            }
+
+            if('velocity' in entity){//entity.type == 'unit'){
                 entity = forces(entity);
             }
 
             if(entity.parent != "" && 'location' in entity){
-
                 let parentObject = entities.find(e => e.name === entity.parent)
-                //console.log('PARENT: ' , parentObject.location.x)
-
-                let loc = orbit(parentObject, entity)
-                
-
-                entity.location = loc;
-                //console.log(loc);
+                entity.location = orbit(parentObject, entity)
             }
 
-            //Lets check if any entites have acceleration force
-            if ('location' in entity && 'acc' in entity){
-                if ('x' in entity.location){
-                    entity.location.x += entity.acc.x;
-                }
-                if ('y' in entity.location){
-                    entity.location.y += entity.acc.y;
-                }
-                if ('c' in entity.location){
-                    entity.location.c += entity.acc.c;
-                }
-            }
+            
+
+      
         }
     }
 }

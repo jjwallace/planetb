@@ -1,13 +1,20 @@
 import Brain from './Brain'
 import PixiPlanet from '../entities/PixiPlanet';
 
+import { forces } from "./utils/forces";
+import { orbit } from "./utils/orbit";
+import { gravity } from "./utils/gravity";
+import { pointMove } from "./utils/pointMove";
+
 export default class Update {
     
     constructor(){
         console.log('Spawner Present')
     }
 
-    entities(){
+    serverEntities(){
+        
+        
         
         // Entities spawner
         let entities = Brain.entities;
@@ -27,6 +34,30 @@ export default class Update {
                 }
 
             }
+        }
+
+    }
+    entities(){  
+        
+        if(Brain.gameData !== null){
+        let e = Brain.gameData.entities;
+        for (let index = 0; index < e.length; index++) {
+            let entity = e[index];
+
+            if('velocity' in entity && 'location' in entity){
+                entity.velocity = gravity(e, entity)
+                //console.log(entity.location)
+            }
+
+            if('velocity' in entity){//entity.type == 'unit'){
+                entity = forces(entity);
+            }
+
+            if(entity.parent != "" && 'location' in entity){
+                let parentObject = e.find(e => e.name === entity.parent)
+                entity.location = orbit(parentObject, entity)
+            }
+        }
         }
     }
 }

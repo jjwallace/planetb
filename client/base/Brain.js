@@ -67,6 +67,7 @@ class Brain {
 
   tick(){
     this.update.entities();
+    this.update.serverEntities();
     this.navigator.targetLockUpdate();
     Keyboard.update();
   }
