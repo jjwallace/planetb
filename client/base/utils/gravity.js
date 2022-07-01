@@ -1,7 +1,7 @@
 export function gravity(entities, entity) {
 
   let velocityForce = {x: entity.velocity.x, y: entity.velocity.y, r: entity.velocity.r}
-  var gravitationalConstant = 10;//0.0000000000667;
+  var gravitationalConstant = 10; //0.0000000000667;
 
   if(entity.mass > 0) {
     entities.forEach(e => {
@@ -13,10 +13,6 @@ export function gravity(entities, entity) {
           Math.pow((entity.location.x - e.location.x), 2) 
           + Math.pow((entity.location.y - e.location.y), 2)
         )
-
-        // if (distance < 0.1) {
-        //   console.log('COLLIDE!!!!!');
-        // }
 
         //Law of universal gravitation
         if(distance != 0){
@@ -40,13 +36,3 @@ export function gravity(entities, entity) {
 
   return {x: velocityForce.x, y: velocityForce.y, r: entity.velocity.r};
 } 
-  
-
-
-
- // var force = gravitationalConstant * ((entity.mass * e.mass) / Math.pow(distance,2));
-          // var direction = Math.atan(Math.abs(entity.location.y-e.location.y) / Math.abs(entity.location.x-e.location.x));
-          // var fx = force * Math.cos(direction);
-          // var fy = force * Math.sin(direction);
-          // if (e.x < entity.x) {fx = fx*-1}
-          // if (e.y < entity.y) {fy = fy*-1}

@@ -1,10 +1,22 @@
 import Brain from './Brain'
 import PixiPlanet from '../entities/PixiPlanet';
 
-import { forces } from "./utils/forces";
-import { orbit } from "./utils/orbit";
-import { gravity } from "./utils/gravity";
-import { pointMove } from "./utils/pointMove";
+import {
+    forces
+  } from "./utils/forces";
+  import {
+    orbit
+  } from "./utils/orbit";
+  import {
+    gravity
+  } from "./utils/gravity";
+  import {
+    pointMove
+  } from "./utils/pointMove";
+  import {
+      surface
+  } from "./utils/surface";
+  
 
 export default class Update {
     
@@ -13,8 +25,6 @@ export default class Update {
     }
 
     serverEntities(){
-        
-        
         
         // Entities spawner
         let entities = Brain.entities;
@@ -26,11 +36,18 @@ export default class Update {
                 let entity = entities[index];
 
                 var entityByUID = Brain.gameData.entities.find(e => e.uuid === entity.data.uuid)
+                
+                if ('x' in entityByUID.location){
+                    entity.x = entityByUID.location.x;
+                    entity.y = entityByUID.location.y;
+                }
 
-                entity.x = entityByUID.location.x;
-                entity.y = entityByUID.location.y;
                 if ('r' in entityByUID.location){
-                entity.rotation = entityByUID.location.r;
+                    entity.rotation = entityByUID.location.r;
+                }
+
+                if ('s' in entityByUID.location){
+                    entity.rotation = entityByUID.location.s;
                 }
 
             }
@@ -53,7 +70,11 @@ export default class Update {
                 entity = forces(entity);
             }
 
-            if(entity.parent != "" && 'location' in entity){
+            if(entity.type == 'surface'){
+                entity = surface(Brain.gameData.entities, entity);
+            }
+
+            if(entity.parent != "" && 'location' in entity && entity.type == 'planet') {
                 let parentObject = e.find(e => e.name === entity.parent)
                 entity.location = orbit(parentObject, entity)
             }

@@ -1,6 +1,4 @@
 //Libraries
-import { Container, Point } from 'pixi.js';
-import * as PIXI from 'pixi.js';
 import * as PixiPlugin from 'gsap/PixiPlugin';
 import * as Keyboard from 'pixi.js-keyboard';
 
@@ -9,13 +7,7 @@ import Connect from "./Connect";
 import Spawner from './Spawner';
 import Update from './Update';
 import Navigator from './Navigator';
-import { LEFT } from 'phaser';
-
-
-//objects
-//import solarData from './data/solar.json'
-
-//import Renderer from './Renderer';
+//import Renderer from './Renderer'; //Need to build out to handle window resize
 
 class Brain {
   //Static Instance / Singleton

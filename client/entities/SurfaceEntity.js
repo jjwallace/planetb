@@ -1,30 +1,48 @@
-import { Sprite, Texture, Graphics } from 'pixi.js';
+import {
+  Sprite,
+  Texture,
+  Graphics
+} from 'pixi.js';
 import Brain from '../base/Brain'
 
 export default class SurfaceEntity extends Sprite {
-    constructor(entityData) {
-        super();
+  constructor(entityData) {
+    super();
 
-        this.data = entityData;
+    this.data = entityData;
 
-        
+    //FIND PARENT
+    var parentEntity = Brain.gameData.entities.find(e => e.uuid === this.data.parent);
+    let surfaceLocation = this.data.location.s;
 
+    var parentEntity = Brain.gameData.entities.find(e => e.uuid === this.data.parent);
 
+    this.rotation = surfaceLocation;
+    this.x = 30;//parentEntity.features.size * Math.sin(surfaceLocation) * 100; // X Component of Force
+    this.y = 30;// parentEntity.features.size * Math.cos(surfaceLocation) * 100; // Y Component of Force
 
+  
+    this.texture = Texture.from('./assets/sprites/' + this.data.features.image + '.png')
+    this.anchor.set(0.5, 0.9);
 
-        this.addChild(graphics);
+    var parentObject = Brain.entities.find(e => e.data.uuid === this.data.parent);
+    console.log('parent parentObject', parentObject)
+    parentObject.addChild(this);
+    
 
-        //Settings
-        this.interactive = true;
-        this.click = function(ev) { 
-            //console.log(this.data.name); 
-            Brain.navigator.navFollow(this);
-        }
-        this.mouseover = function(ev) { 
-            console.log("over"); 
-        }
+    
+    
 
-        //Find the parent with the UUID and then add this to child of that display object
-        Brain.entities.addChild(this);
+    
+
+    //Settings
+    // this.interactive = true;
+    // this.click = function(ev) {
+    //   console.log('Surface Item', this.data.name); 
+    //   Brain.navigator.navFollow(this);
+    // }
+    this.mouseover = function(ev) {
+      console.log("over");
     }
+  }
 }

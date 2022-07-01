@@ -14,8 +14,12 @@ export function gravity(entities, entity) {
           + Math.pow((entity.location.y - e.location.y), 2)
         )
 
-        // if (distance < 0.1) {
-        //   console.log('COLLIDE!!!!!');
+        // console.log('distance!!!!!', distance);
+        // if (distance < e.features.size) {
+        //   if(e.uuid != entity.uuid){
+        //     console.log('COLLIDE!!!!!');
+        //     return {x: 0, y: 0, r: 0};
+        //   }
         // }
 
         //Law of universal gravitation
@@ -40,13 +44,3 @@ export function gravity(entities, entity) {
 
   return {x: velocityForce.x, y: velocityForce.y, r: entity.velocity.r};
 } 
-  
-
-
-
- // var force = gravitationalConstant * ((entity.mass * e.mass) / Math.pow(distance,2));
-          // var direction = Math.atan(Math.abs(entity.location.y-e.location.y) / Math.abs(entity.location.x-e.location.x));
-          // var fx = force * Math.cos(direction);
-          // var fy = force * Math.sin(direction);
-          // if (e.x < entity.x) {fx = fx*-1}
-          // if (e.y < entity.y) {fy = fy*-1}
