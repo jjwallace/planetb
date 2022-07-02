@@ -189,11 +189,32 @@
       "name": "earth",
       "parent": "1243s24344",
       "type": "surface",
-      "location": {"x":0, "y": 0, "s": 145},
-      "zoom": {"size": 100, "speed": 1000},
+      "location": {"x":0, "y": 0, "s": 150},
       "features": {
         "size": 10,
         "image": "storage"
+      }
+    },
+    {
+      "uuid": "32243244sdf99993432994",
+      "name": "earth",
+      "parent": "1243s24344",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": 245},
+      "features": {
+        "size": 10,
+        "image": "storage"
+      }
+    },
+    {
+      "uuid": "322432449999fdg94",
+      "name": "earth",
+      "parent": "1243s24344",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": -85},
+      "features": {
+        "size": 10,
+        "image": "base"
       }
     }
   ]
