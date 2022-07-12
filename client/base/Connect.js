@@ -27,7 +27,7 @@ export default class Connect {
         Brain.spawner.spawnAll();
       } else {
         Brain.gameData = data;
-        Brain.update.serverEntities();
+        //Brain.update.UpdateUtils();  //Not nesasary because its in the loop
       }
     });
   }

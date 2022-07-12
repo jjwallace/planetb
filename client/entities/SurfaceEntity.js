@@ -13,17 +13,13 @@ export default class SurfaceEntity extends Sprite {
 
     //FIND PARENT
     var parentEntity = Brain.gameData.entities.find(e => e.uuid === this.data.parent);
-    let surfaceLocation = this.data.location.s;
-
     var parentEntity = Brain.gameData.entities.find(e => e.uuid === this.data.parent);
-
-    this.rotation = surfaceLocation;
-    this.x = 30;//parentEntity.features.size * Math.sin(surfaceLocation) * 100; // X Component of Force
-    this.y = 30;// parentEntity.features.size * Math.cos(surfaceLocation) * 100; // Y Component of Force
-
+    // this.x = 30;//parentEntity.features.size * Math.sin(surfaceLocation) * 100; // X Component of Force
+    // this.y = 30;// parentEntity.features.size * Math.cos(surfaceLocation) * 100; // Y Component of Force
   
     this.texture = Texture.from('./assets/sprites/' + this.data.features.image + '.png')
-    this.anchor.set(0.5, 0.9);
+    this.anchor.set(0.5, 0.94);
+    this.scale.set(this.data.features.size/100)
 
     var parentObject = Brain.entities.find(e => e.data.uuid === this.data.parent);
     console.log('parent parentObject', parentObject)

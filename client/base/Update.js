@@ -3,19 +3,19 @@ import PixiPlanet from '../entities/PixiPlanet';
 
 import {
     forces
-  } from "./utils/forces";
+  } from "../../server/src/game/base/utils/forces";
   import {
     orbit
-  } from "./utils/orbit";
+  } from "../../server/src/game/base/utils/orbit";
   import {
     gravity
-  } from "./utils/gravity";
+  } from "../../server/src/game/base/utils/gravity";
   import {
     pointMove
-  } from "./utils/pointMove";
+  } from "../../server/src/game/base/utils/pointMove";
   import {
-      surface
-  } from "./utils/surface";
+    surface
+  } from "../../server/src/game/base/utils/surface";
   
 
 export default class Update {
@@ -24,7 +24,7 @@ export default class Update {
         console.log('Spawner Present')
     }
 
-    serverEntities(){
+    updateEntitiesRender(){
         
         // Entities spawner
         let entities = Brain.entities;
@@ -43,42 +43,38 @@ export default class Update {
                 }
 
                 if ('r' in entityByUID.location){
-                    entity.rotation = entityByUID.location.r;
+                    //entity.angle = entityByUID.location.r;
                 }
 
                 if ('s' in entityByUID.location){
-                    entity.rotation = entityByUID.location.s;
+                    entity.angle = entityByUID.location.s;
+                    console.log(entityByUID.location.s)
+                }
+            }
+        }
+    }
+
+    UpdateUtils(){  
+        
+        if(Brain.gameData !== null){
+            let e = Brain.gameData.entities;
+            for (let index = 0; index < e.length; index++) {
+                let entity = e[index];
+
+                if('velocity' in entity && 'location' in entity){
+                    entity.velocity = gravity(e, entity)
+                    //console.log(entity.location)
+                }
+
+                if('velocity' in entity){//entity.type == 'unit'){
+                    entity = forces(entity);
+                }
+
+                if(entity.type == 'surface'){
+                    entity = surface(Brain.gameData.entities, entity);
                 }
 
             }
-        }
-
-    }
-    entities(){  
-        
-        if(Brain.gameData !== null){
-        let e = Brain.gameData.entities;
-        for (let index = 0; index < e.length; index++) {
-            let entity = e[index];
-
-            if('velocity' in entity && 'location' in entity){
-                entity.velocity = gravity(e, entity)
-                //console.log(entity.location)
-            }
-
-            if('velocity' in entity){//entity.type == 'unit'){
-                entity = forces(entity);
-            }
-
-            if(entity.type == 'surface'){
-                entity = surface(Brain.gameData.entities, entity);
-            }
-
-            if(entity.parent != "" && 'location' in entity && entity.type == 'planet') {
-                let parentObject = e.find(e => e.name === entity.parent)
-                entity.location = orbit(parentObject, entity)
-            }
-        }
         }
     }
 }

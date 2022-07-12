@@ -19,6 +19,11 @@ ReactDOM.render(
 
 const pixi = new Pixi();
 
+
+
+
+
+
 // Below is prototype #1 Running Phaser3, uncomment to view...
 
 // // Bringing in our base example scene

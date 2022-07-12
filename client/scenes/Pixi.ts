@@ -7,12 +7,9 @@ import { Viewport } from 'pixi-viewport';
 
 //Components
 import Brain from '../base/Brain'
-import Ticker from '../base/Ticker'
-import orbit from '../base/utils/orbit'
-import Background from '../entities/Background';
 
 //Assets & Misc
-import PixiPlanet from '../entities/PixiPlanet';
+//import PixiPlanet from '../entities/PixiPlanet';
 
 export default class Pixi {
   constructor() {
@@ -29,6 +26,11 @@ export default class Pixi {
 
     // Brain.background = new Background();
     // Brain.app.stage.addChild(Brain.background)
+
+    const loader = PIXI.Loader.shared;
+    loader.add("./assets/sprites/rocket.json").load(() => {
+      
+    })
 
     if (Brain.viewport == null) {
       //CREATE VIEWPORT

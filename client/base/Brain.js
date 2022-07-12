@@ -10,8 +10,7 @@ import Navigator from './Navigator';
 //import Renderer from './Renderer'; //Need to build out to handle window resize
 
 class Brain {
-  //Static Instance / Singleton
-  //**** WARNING: APPLICATION GOD CLASS *****
+  //**** WARNING: APPLICATION GOD CLASS *****   Static Instance / Singleton
 
   constructor() {
     if (!instance) {
@@ -41,7 +40,6 @@ class Brain {
 
     Keyboard.events.on('pressed', null, (keyCode, event) => { 
       if(keyCode.includes("Arrow")){
-        //let key = keyCode.replace("Arrow")
         this.keyboard[keyCode] = true;
         this.connect.sendKeyboard(this);
       }   
@@ -49,7 +47,6 @@ class Brain {
     })
     Keyboard.events.on('released', null, (keyCode, event) => { 
       if(keyCode.includes("Arrow")){
-        //let key = keyCode.replace("Arrow")
         this.keyboard[keyCode] = false;
         this.connect.sendKeyboard(this);
       }   
@@ -58,31 +55,14 @@ class Brain {
   }
 
   tick(){
-    this.update.entities();
-    this.update.serverEntities();
+    this.update.UpdateUtils();
+    this.update.updateEntitiesRender();
     this.navigator.targetLockUpdate();
     Keyboard.update();
   }
 
   entityUpdateZoom() {
     console.log('ZOOM UPDATE', this.viewport.scale)
-
-    // this.background.width = this.viewport.scale * 1000;
-    // this.background.height = this.viewport.scale * 1000;
-
-    // const minZoom = 3;
-    // const maxZoom = 7;
-    // let zoom = this.viewport.scale;
-    // let zoomRounded = maxZoom - zoom.x * maxZoom;
-    // if (zoomRounded < minZoom) {
-    //   zoomRounded = minZoom;
-    // }
-    // // console.warn('zoomed R: ', zoomRounded);
-    // for (let i = 0; i < this.indexFilter.length; i++) {
-    //   let v = this.indexFilter[i];
-    //   // this.entities[v].medal.alpha = (1 / zoomRounded + 3);
-    //   this.entities[v].medal.scale.set(zoomRounded / 2.5);
-    // }
   }
 
 }
