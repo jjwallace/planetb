@@ -47,8 +47,8 @@ export default class Update {
                 }
 
                 if ('s' in entityByUID.location){
-                    entity.angle = entityByUID.location.s;
-                    console.log(entityByUID.location.s)
+                    // entity.angle = entityByUID.location.s;
+                    // console.log(entityByUID.location.s)
                 }
             }
         }
