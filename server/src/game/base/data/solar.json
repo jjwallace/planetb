@@ -29,7 +29,7 @@
       "zoom": {"size": 100, "speed": 100},
       "features": {
         "size": 50,
-        "color": "0x33cc33",
+        "color": "0x7c6b26",
         "atmosphere": {
           "size": 120,
           "color": "0x0099ff"
@@ -185,8 +185,74 @@
       }
     },
     {
-      "uuid": "3224324499993432994",
+      "uuid": "3224324f49999fd2g94",
       "name": "earth",
+      "parent": "1243s24344",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": -95},
+      "features": {
+        "size": 10,
+        "image": "tree"
+      }
+    },
+    {
+      "uuid": "322f43244229999fdg94",
+      "name": "earth",
+      "parent": "1243s24344",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": -155},
+      "features": {
+        "size": 10,
+        "image": "tree"
+      }
+    },
+    {
+      "uuid": "32243244999944fdfg94",
+      "name": "earth",
+      "parent": "1243s24344",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": -185},
+      "features": {
+        "size": 10,
+        "image": "tree"
+      }
+    },
+    {
+      "uuid": "32243244999944fwedfg94",
+      "name": "earth",
+      "parent": "1243s24344",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": -252},
+      "features": {
+        "size": 10,
+        "image": "tree"
+      }
+    },
+    {
+      "uuid": "3224324499re9944fdfg94",
+      "name": "earth",
+      "parent": "1243s24344",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": -327},
+      "features": {
+        "size": 10,
+        "image": "tree"
+      }
+    },
+    {
+      "uuid": "3224324f4999229fdg94",
+      "name": "earth",
+      "parent": "1243s24344",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": -225},
+      "features": {
+        "size": 10,
+        "image": "tree"
+      }
+    },
+    {
+      "uuid": "32222324499993432994",
+      "name": "storage",
       "parent": "1243s24344",
       "type": "surface",
       "location": {"x":0, "y": 0, "s": 150},
@@ -197,7 +263,7 @@
     },
     {
       "uuid": "32243244sdf99993432994",
-      "name": "earth",
+      "name": "storage",
       "parent": "1243s24344",
       "type": "surface",
       "location": {"x":0, "y": 0, "s": 245},
@@ -207,8 +273,21 @@
       }
     },
     {
+      "uuid": "32243244sffdf999934532994",
+      "name": "storage",
+      "parent": "124324341",
+      "type": "surface",
+      "location": {"x":0, "y": 0, "s": 45},
+      "features": {
+        "size": 10,
+        "image": "storage"
+      }
+    },
+
+    
+    {
       "uuid": "322432449999fdg94",
-      "name": "earth",
+      "name": "base",
       "parent": "1243s24344",
       "type": "surface",
       "location": {"x":0, "y": 0, "s": -85},
