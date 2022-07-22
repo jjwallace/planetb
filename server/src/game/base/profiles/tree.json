@@ -1,0 +1,11 @@
+{
+    "uuid": "132412341241242145565763465",
+    "name": "earth",
+    "parent": "1243s24344",
+    "type": "surface",
+    "location": {"x":0, "y": 0, "s": -225},
+    "features": {
+      "size": 10,
+      "image": "tree"
+    }
+}
