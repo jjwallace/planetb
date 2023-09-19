@@ -1,9 +1,7 @@
-//Assets & Misc
-import Brain from '../base/Brain'
-
-function Ticker() {
-  
-    console.log('TICK')
+// Assets & Misc
+function Ticker () {
+	// Lets hold off on this for now
+  console.log('TICK')
 }
 
-export default Ticker();
+export default Ticker()

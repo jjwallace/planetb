@@ -1,50 +1,48 @@
-import socketIOClient from "socket.io-client";
-//import Brain from "./Brain"
+import socketIOClient from 'socket.io-client'
+// import Brain from "./Brain"
 
 export default class Connect {
-
-  constructor(Brain) {
-
-    this.brain = Brain;
+  constructor (Brain) {
+    this.brain = Brain
 
     const config = {
-      endpoint: window.location.hostname + ":3000"
+      endpoint: window.location.hostname + ':3000'
     }
 
-    this._createdTime = new Date();
-    console.log("Connect Component Created");
+    this._createdTime = new Date()
+    console.log('Connect Component Created')
 
-    this.socket = socketIOClient(config.endpoint);
+    this.socket = socketIOClient(config.endpoint)
     console.log('Socket Endpoint: ', config.endpoint)
 
-    //Request game data from server
-    this.socket.emit("get gameData")
+    // Request game data from server
+    this.socket.emit('get gameData')
 
-    //Receieve game data from server, SPAWN ITEMS
-    this.socket.on("gameData", data => {
+    // Receieve game data from server, SPAWN ITEMS
+    this.socket.on('gameData', data => {
       if (Brain.gameData == null) {
-        Brain.gameData = data;
-        Brain.spawner.spawnAll();
+        Brain.gameData = data
+        Brain.spawner.spawnAll()
       } else {
-        Brain.gameData = data;
-        //Brain.update.UpdateUtils();  //Not nesasary because its in the loop
+        Brain.gameData = data
+        // Brain.update.UpdateUtils();  //Not nesasary because its in the loop
       }
-    });
+    })
   }
 
-  sendSelected() {
-    this.socket.emit("select", this.brain.selected)
+  sendSelected () {
+    this.socket.emit('select', this.brain.selected)
   }
 
-  getData() {
-    this.socket.emit("get gameData")
+  getData () {
+    this.socket.emit('get gameData')
   }
 
-  sendKeyboard(Brain) {
-    this.socket.emit("keyboard", Brain.keyboard);
+  sendKeyboard (Brain) {
+    this.socket.emit('keyboard', Brain.keyboard)
   }
 
-  createdTime() {
-    return this._createdTime.toISOString();
+  createdTime () {
+    return this._createdTime.toISOString()
   }
 }
