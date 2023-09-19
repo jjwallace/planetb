@@ -19,8 +19,6 @@ export default class Spawner {
   }
 
   spawnAll() {
-    //this.spawnStarField(); //Way to heavy
-
     // Entities spawner
     for (let index = 0; index < Brain.gameData.entities.length; index++) {
       let entityData = Brain.gameData.entities;
@@ -37,9 +35,6 @@ export default class Spawner {
       if(entityData[index].location.x != undefined){
         entity.x = entityData[index].location.x;
         entity.y = entityData[index].location.y;
-    //   }else{
-    //     entity.x = 0;
-    //     entity.y = 0;
       }
 
       entity.data = entityData[index];

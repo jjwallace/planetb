@@ -3,16 +3,13 @@ import socketIO from 'socket.io';
 
 //Components
 import Mind from "./Mind";
-//import Events from './events/Events.js';
 
 export default class Socket {
-
   constructor(io) {
-
     console.log('Listening for socket Connections....')
 
-    let users = [];
-    let sockets = {};
+    const users = [];
+    const sockets = {};
 
     io.on('connection', (socket) => {
       console.log('Connection established: ' + socket.id);
@@ -34,13 +31,11 @@ export default class Socket {
       socket.on('keyboard', (keyboard) => {
         //console.log('receieved keybaord', keyboard);
         Mind.keyboard = keyboard;
-
       });
 
       socket.on('select', (selected) => {
         console.log('receieved selected', selected);
         Mind.selected = selected;
-
       });
       //***********************************************************************************
 

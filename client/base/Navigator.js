@@ -1,5 +1,4 @@
 export default class Navigator {
-
   constructor(Brain) {
     console.log('Spawner Present')
     this.brain = Brain;
@@ -16,22 +15,7 @@ export default class Navigator {
   navFollow(entity) {
     console.log('CLICK: ', entity);
 
-    // let accelerationRatio = 10;// * this.brain.viewport.scale;
-    // let speedRatio = 1000;// * this.brain.viewport.scale;
-
-    // this.brain.viewport.follow(
-    //     entity,
-    //     {
-    //         speed: speedRatio, 
-    //         acceleration: accelerationRatio, 
-    //         radius: 0
-    //     }
-    // )
-
-    //console.log(entity.data.features.size)
-
-
-    // Zoom Feature seems to not catch up with Orbit Speed
+    // Zoom Feature seems to not catch up with Orbit Speed (lets leave this here for now)
     //  this.brain.viewport.snapZoom(
     //     {
     //         center: {x: entity.x, y: entity.y},
@@ -51,11 +35,8 @@ export default class Navigator {
   }
 
   targetLockUpdate() {
-    //console.log('LOCK UPDATE LOOP')
     if (this.targetLock == true && this.lockedEntity != null) {
       this.brain.viewport.moveCenter(this.lockedEntity.x, this.lockedEntity.y)
-
     }
   }
-
 }
