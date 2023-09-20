@@ -1,13 +1,13 @@
-//Libraries
-import React from 'react';
+// Libraries
+import React from 'react'
 import ReactDOM from 'react-dom'
 import Phaser from 'phaser'
 
-//Components
-import App from './ui/App';
-import Pixi from './scenes/Pixi';
+// Components
+import App from './ui/App'
+import Pixi from './scenes/Pixi'
 
-//Assets & Misc
+// Assets & Misc
 import Brain from './base/Brain'
 
 ReactDOM.render(
@@ -15,14 +15,9 @@ ReactDOM.render(
         {/* <App/> */}
     </React.StrictMode>,
     document.querySelector('#root')
-);
+)
 
-const pixi = new Pixi();
-
-
-
-
-
+const pixi = new Pixi()
 
 // Below is prototype #1 Running Phaser3, uncomment to view...
 
@@ -48,4 +43,3 @@ const pixi = new Pixi();
 // // Add and auto-starting ExampleScene
 // game.scene.add('GameScene', GameScene)
 // game.scene.start('GameScene')
-

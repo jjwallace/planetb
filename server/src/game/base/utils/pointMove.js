@@ -1,11 +1,10 @@
-export function pointMove(entity) {
-
+export function pointMove (entity) {
   console.log('ANGLE', entity.location)
-  let angle = entity.location.r - 90;
-  let acceleration = entity.features.acceleration;
+  const angle = entity.location.r - 90
+  const acceleration = entity.features.acceleration
 
-  entity.velocity.x += acceleration * Math.cos(angle);
-  entity.velocity.y += acceleration * Math.sin(angle);
+  entity.velocity.x += acceleration * Math.cos(angle)
+  entity.velocity.y += acceleration * Math.sin(angle)
 
   return {
     x: entity.velocity.x,

@@ -1,9 +1,6 @@
-export function generatePlanet(planet) {
+export function generatePlanet (planet) {
+  const circleRadius = planet.features.size
+  const circumferenceOfCircle = 2 * Math.PI * circleRadius
 
-    let circleRadius = planet.features.size;
-    let circumferenceOfCircle = 2 * Math.PI * circleRadius;
-
-
-  
-    return false;
-  }
+  return false
+}

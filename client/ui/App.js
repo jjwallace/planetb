@@ -1,9 +1,9 @@
-import React from 'react';
-import Button from './components/menu/Button';
-import Menu from './components/menu/Menu';
-import Banner from './components/banner/Banner';
+import React from 'react'
+import Button from './components/menu/Button'
+import Menu from './components/menu/Menu'
+import Banner from './components/banner/Banner'
 
-function App() {
+function App () {
   return (
     <div className="app">
       <header className="App-header">
@@ -13,7 +13,7 @@ function App() {
         <Menu />
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

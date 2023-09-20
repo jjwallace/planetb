@@ -1,6 +1,6 @@
 // Assets & Misc
 function Ticker () {
-	// Lets hold off on this for now
+  // Lets hold off on this for now
   console.log('TICK')
 }
 
