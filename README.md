@@ -1,6 +1,6 @@
-# PLANET B
+# PLANET B v1
 
-Multiplayer Game
+Multiplayer Game WebGL / Canvas
 SocketIO, Node, React, PIXIjs,
 
 ![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/notes/pictures/galaxy.jpg)
