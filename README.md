@@ -1,4 +1,8 @@
 # PLANET B
+
+Multiplayer Game
+SocketIO, Node, React, PIXIjs,
+
 ![Image of a galaxy and planet](https://github.com/jjwallace/planetb/blob/main/notes/pictures/galaxy.jpg)
 
 ## Install
